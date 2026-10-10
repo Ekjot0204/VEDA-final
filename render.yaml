@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: veda-health-copilot-api
+    runtime: python
+    plan: free
+    rootDir: veda-backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: FRONTEND_ORIGINS
+        value: https://ekjot0204.github.io
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: veda-medical-records
+      - key: MAX_FILE_MB
+        value: "15"

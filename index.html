@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veda — Your Health Journey, Understood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2A47; --ink:#14283F; --muted:#5B6E83; --line:#DCE6F0; --bg:#F4F8FC; --card:#FFFFFF; --soft:#E7F0FA; --blue:#2F78BD; --blue-d:#1F5E9C;
+  --teal:#0E9F8C; --teal-soft:#DDF4F0; --amber:#B86E00; --amber-soft:#FFF2DB; --red:#B83A2E; --red-soft:#FCE8E5; --shadow:0 1px 2px rgba(14,42,71,.06),0 6px 20px rgba(14,42,71,.06);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif; --sans:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--navy:#CFE3F7;--ink:#E6EEF7;--muted:#9DB1C6;--line:#24384E;--bg:#0A1625;--card:#102238;--soft:#16304A;--blue:#6BAEEA;--blue-d:#8CC1F2;--teal:#3CC9B5;--teal-soft:#0F3A3A;--amber:#F0B45A;--amber-soft:#3A2B10;--red:#F08A7E;--red-soft:#3D1B18;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3)}
+}
+:root[data-theme="dark"]{--navy:#CFE3F7;--ink:#E6EEF7;--muted:#9DB1C6;--line:#24384E;--bg:#0A1625;--card:#102238;--soft:#16304A;--blue:#6BAEEA;--blue-d:#8CC1F2;--teal:#3CC9B5;--teal-soft:#0F3A3A;--amber:#F0B45A;--amber-soft:#3A2B10;--red:#F08A7E;--red-soft:#3D1B18;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.2}
+p{margin:0}
+.serif{font-family:var(--serif);font-weight:400}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* shell */
+#app{display:block}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:10px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:24px;color:var(--navy);letter-spacing:.2px}
+.brand .mark{width:26px;height:26px;border-radius:9px;background:linear-gradient(135deg,var(--navy),var(--blue));display:grid;place-items:center;color:#fff}
+.brand .mark svg{width:16px;height:16px;stroke:#fff}
+.spacer{flex:1}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:600;background:var(--soft);color:var(--blue-d);border:0}
+.chip.teal{background:var(--teal-soft);color:var(--teal)} .chip.amber{background:var(--amber-soft);color:var(--amber)} .chip.red{background:var(--red-soft);color:var(--red)} .chip.plain{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.sos{background:var(--red);color:#fff;border:0;border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px;display:flex;gap:6px;align-items:center}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;color:var(--ink)}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:space-around;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;padding:6px 2px;color:var(--muted);font-size:11px;font-weight:600;border-radius:12px}
+nav.tabs button[aria-current="page"]{color:var(--blue-d)}
+nav.tabs button[aria-current="page"] svg{stroke-width:2.3}
+main{max-width:1000px;margin:0 auto;padding:18px 16px 110px}
+@media (min-width:900px){
+  nav.tabs{top:calc(env(safe-area-inset-top,0px) + 58px);bottom:0;right:auto;width:92px;flex-direction:column;justify-content:flex-start;gap:6px;border-top:0;border-right:1px solid var(--line);padding:16px 8px}
+  main{margin-left:max(104px,calc((100vw - 1000px)/2 + 40px));padding-bottom:60px}
+}
+.view-title{font-family:var(--serif);font-size:30px;color:var(--navy);margin-bottom:4px}
+.sub{color:var(--muted)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+@media (max-width:480px){.grid.two{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+.card h3{font-size:15px;color:var(--muted);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card.flat{box-shadow:none}
+.big{font-size:22px;font-weight:600;color:var(--navy)}
+.row{display:flex;align-items:center;gap:10px}
+.row.sp{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.stack{display:flex;flex-direction:column;gap:10px}
+.mt{margin-top:14px}.mt-s{margin-top:8px}
+.btn{border:0;border-radius:12px;padding:10px 16px;font-weight:600;background:var(--navy);color:var(--card);display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.teal{background:var(--teal);color:#fff}
+.btn.ghost{background:var(--soft);color:var(--blue-d)}
+.btn.line{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.danger{background:var(--red-soft);color:var(--red)}
+.btn.sm{padding:6px 12px;font-size:14px;border-radius:10px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.link{background:none;border:0;color:var(--blue-d);font-weight:600;padding:0;display:inline-flex;gap:4px;align-items:center}
+input,select,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 12px;min-height:44px}
+textarea{resize:vertical;min-height:84px}
+label{display:block;font-size:13.5px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.field{margin-bottom:12px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.demo-banner{background:var(--amber-soft);color:var(--amber);border-radius:14px;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:14px;font-weight:500}
+.greet{margin:6px 0 18px}
+.greet h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,6vw,44px);color:var(--navy)}
+.qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.qa button{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--ink);text-align:center}
+.qa button .ico{width:40px;height:40px;border-radius:12px;background:var(--soft);color:var(--blue-d);display:grid;place-items:center}
+.qa button.urgent .ico{background:var(--red-soft);color:var(--red)}
+.qa button:hover{border-color:var(--blue)}
+.thread{position:relative;display:flex;justify-content:space-between;gap:6px;padding:20px 4px 0;margin-top:6px}
+.thread::before{content:"";position:absolute;left:10px;right:10px;top:27px;height:2px;background:linear-gradient(90deg,var(--teal),var(--blue))}
+.thread .n{position:relative;flex:1;min-width:0;text-align:center;background:none;border:0;padding:0}
+.thread .dot{width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--teal);margin:0 auto 8px;display:block;position:relative}
+.thread .n.up .dot{border-color:var(--blue);border-style:dashed}
+.thread .t{font-size:12px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.thread .d{font-size:11.5px;color:var(--muted)}
+.alert{display:flex;gap:10px;border-radius:14px;padding:12px;background:var(--amber-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--amber) 35%,transparent)}
+.alert.red{background:var(--red-soft);border-color:color-mix(in srgb,var(--red) 35%,transparent)}
+.alert svg{color:var(--amber);margin-top:2px}.alert.red svg{color:var(--red)}
+.alert b{display:block;margin-bottom:2px}
+.insight{background:linear-gradient(135deg,var(--navy),#1F5E9C);color:#fff;border:0}
+.insight h3{color:#BFD9F2}
+.insight p{font-family:var(--serif);font-size:20px;line-height:1.35}
+.insight .btn{background:rgba(255,255,255,.16);color:#fff}
+.list{display:flex;flex-direction:column}
+.item{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);background:none;border-left:0;border-right:0;border-bottom:0;width:100%;text-align:left}
+.item:first-child{border-top:0}
+.item .ico{width:36px;height:36px;border-radius:11px;background:var(--soft);color:var(--blue-d);display:grid;place-items:center;flex:none}
+.item .ico.teal{background:var(--teal-soft);color:var(--teal)} .item .ico.amber{background:var(--amber-soft);color:var(--amber)} .item .ico.red{background:var(--red-soft);color:var(--red)}
+.item .txt{flex:1;min-width:0}
+.item .txt b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.item .txt span{color:var(--muted);font-size:14px}
+.pips{display:flex;gap:6px}
+.pip{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;color:#fff;padding:0}
+.pip.on{background:var(--teal);border-color:var(--teal)} .pip svg{width:14px;height:14px;stroke-width:3}
+.tabsbar{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin:12px 0}
+.tabsbar button{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px;color:var(--muted)}
+.tabsbar button[aria-pressed="true"]{background:var(--navy);color:var(--card);border-color:var(--navy)}
+/* timeline */
+.tl-year{font-family:var(--serif);font-size:26px;color:var(--navy);margin:20px 0 6px}
+.tl{position:relative;margin-left:14px;padding-left:26px;border-left:2px solid var(--line)}
+.tl .ev{position:relative;display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.tl .ev::before{content:"";position:absolute;left:-35px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--teal)}
+.tl .ev.t-report::before{border-color:var(--blue)} .tl .ev.t-symptom::before{border-color:var(--amber)} .tl .ev.t-medicine::before,.tl .ev.t-prescription::before{border-color:var(--teal)} .tl .ev.t-visit::before{border-color:var(--navy)} .tl .ev.up::before{border-style:dashed}
+.tl .ev:hover{border-color:var(--blue)}
+.tl .ev .meta{color:var(--muted);font-size:13px}
+.tl .ev b{display:block}
+/* tables */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-size:13px;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.num{font-variant-numeric:tabular-nums}
+.arrow{font-weight:700}
+.arrow.up{color:var(--blue-d)} .arrow.down{color:var(--teal)} .arrow.same{color:var(--muted)}
+.rng{font-size:12.5px}
+.chart{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font-size:10px;font-family:var(--sans)}
+.chart .ln{stroke:var(--blue);fill:none;stroke-width:2.2}
+.chart .pt{fill:var(--card);stroke:var(--blue);stroke-width:2.2}
+.chart .band{fill:var(--teal);opacity:.12}
+.chart .grid{stroke:var(--line)}
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:60;background:rgba(8,20,35,.55);display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none}
+.sheet-card{width:100%;max-width:640px;max-height:92%;overflow:auto;background:var(--bg);border-radius:22px 22px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));animation:up .22s ease-out}
+.sheet-card.wide{max-width:860px}
+@media (min-width:700px){.sheet{align-items:center}.sheet-card{border-radius:22px;max-height:88%}}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.sheet-card header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px}
+.sheet-card header h3{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--navy)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;z-index:80;background:var(--navy);color:var(--card);padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;box-shadow:var(--shadow);max-width:90%}
+/* chat */
+.chat{display:flex;flex-direction:column;gap:12px;min-height:260px}
+.msg{max-width:88%;padding:12px 14px;border-radius:16px;white-space:pre-wrap;word-wrap:break-word}
+.msg.u{align-self:flex-end;background:var(--navy);color:var(--card);border-bottom-right-radius:4px}
+.msg.a{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+.src{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.src button{border:1px solid var(--line);background:var(--soft);color:var(--blue-d);border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+.composer{position:sticky;bottom:78px;display:flex;gap:8px;background:var(--bg);padding:10px 0}
+@media (min-width:900px){.composer{bottom:0}}
+.dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--muted);margin:0 2px;animation:b 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-4px);opacity:.5}}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:10px;align-items:flex-start}
+.step .tick{width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none;margin-top:1px}
+.step .tick svg{width:14px;height:14px;stroke-width:3}
+.step.wait .tick{background:var(--line)}
+.empty{text-align:center;padding:26px 14px;color:var(--muted)}
+.empty b{display:block;color:var(--ink);margin-bottom:4px}
+.dropzone{border:2px dashed var(--line);border-radius:16px;padding:22px;text-align:center;background:var(--card)}
+.sosbig{width:100%;background:var(--red);color:#fff;border:0;border-radius:18px;padding:18px;font-size:20px;font-weight:700;display:flex;gap:10px;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--muted)}
+.hide{display:none!important}
+.sw{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.sw:first-child{border-top:0}
+.tog{position:relative;width:46px;height:28px;border-radius:999px;background:var(--line);border:0;flex:none;padding:0}
+.tog::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .15s}
+.tog[aria-checked="true"]{background:var(--teal)}
+.tog[aria-checked="true"]::after{transform:translateX(18px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.topbar,nav.tabs,.composer{display:none}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span class="mark" id="logoMark"></span>Veda</div>
+    <span class="spacer"></span>
+    <span class="chip plain" id="syncChip" title="Where your data is stored"></span>
+    <button class="sos" data-act="openSOS" aria-label="Emergency SOS"><span id="sosIc"></span>SOS</button>
+    <button class="iconbtn" data-act="openMore" aria-label="More: cabinet, family, records, profile, privacy"><span id="moreIc"></span></button>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="Main navigation"></nav>
+  <main id="main" tabindex="-1"></main>
+</div>
+<div class="sheet" id="sheet" hidden><div class="sheet-card" id="sheetCard" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><header><h3 id="sheetTitle"></h3><button class="iconbtn" data-act="closeSheet" aria-label="Close"><span id="xIc"></span></button></header><div id="sheetBody"></div></div></div>
+<div id="toastHost"></div>
+
+<script>
+/* ============ utils ============ */
+const $=(s,el=document)=>el.querySelector(s);
+const $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+const iso=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+const today=()=>iso(new Date());
+const addDays=(n,from=new Date())=>{const d=new Date(from);d.setDate(d.getDate()+n);return iso(d)};
+const D=s=>new Date(s+'T00:00:00');
+const fmt=s=>s?D(s).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'—';
+const fmtS=s=>s?D(s).toLocaleDateString('en-GB',{day:'numeric',month:'short'}):'—';
+const diffDays=(a,b)=>Math.round((D(a)-D(b))/864e5);
+const age=dob=>{if(!dob)return null;const b=D(dob),n=new Date();let a=n.getFullYear()-b.getFullYear();if(n<new Date(n.getFullYear(),b.getMonth(),b.getDate()))a--;return a};
+const num=v=>{const n=parseFloat(v);return isFinite(n)?n:null};
+const fmtN=n=>n==null?'—':(Math.round(n*100)/100).toString();
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+
+const ICON={home:'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
+route:'M6 19a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM18 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM8.5 16.5H15a3 3 0 0 0 0-6h-1.5',
+file:'M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h6',
+calendar:'M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z',
+spark:'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z',
+pill:'M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 7-7l7 7a4.95 4.95 0 0 1-7 7ZM8.5 8.5l7 7',
+scan:'M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10',
+upload:'M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3',
+alert:'M12 4 2.5 20h19zM12 10v4M12 17h.01',
+users:'M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20M10 11.5a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5ZM20 20v-1.5a3.5 3.5 0 0 0-2.5-3.35M15.5 5.2a3.25 3.25 0 0 1 0 6.1',
+user:'M5 20a7 7 0 0 1 14 0M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z',
+shield:'M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6zM9 12l2 2 4-4',
+search:'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM21 21l-5-5',
+plus:'M12 5v14M5 12h14',
+trash:'M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3',
+chev:'M9 6l6 6-6 6',
+heart:'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z',
+activity:'M3 12h4l3 8 4-16 3 8h4',
+camera:'M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1ZM12 17a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z',
+send:'M21 3 10 14M21 3l-7 18-4-7-7-4z',
+download:'M12 4v12M7 11l5 5 5-5M4 20h16',
+check:'M5 12.5l4.5 4.5L19 7',
+x:'M6 6l12 12M18 6 6 18',
+steth:'M6 3v6a4 4 0 0 0 8 0V3M10 13v3a4 4 0 0 0 8 0v-1M18 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',
+folder:'M3 7a1 1 0 0 1 1-1h5l2 2h8a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z',
+edit:'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
+phone:'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1Z',
+lock:'M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3',
+share:'M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8.6 13.5l6.8 4M15.4 6.5l-6.8 4',
+back:'M15 6l-6 6 6 6',
+more:'M5 12h.01M12 12h.01M19 12h.01',
+trend:'M3 17l6-6 4 4 8-8M15 7h6v6',
+clock:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 7v5l3 2',
+note:'M5 4h14v16H5zM9 9h6M9 13h6'};
+const ic=(n,cls='')=>`<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[n]||''}"/></svg>`;
+
+/* ============ state ============ */
+const KEY='veda_state_v1';
+const blank=()=>({v:1,rev:0,onboarded:false,demo:false,
+ profile:{name:'',dob:'',sex:'',blood:'',height:'',weight:'',conditions:'',emergencyNote:'',emergencyNumber:'112',contacts:[],doctors:[]},
+ allergies:[],docs:[],medicines:[],appointments:[],symptoms:[],events:[],family:[],briefs:{},chat:[],doses:{},dismissed:{},
+ consents:{ai:true,family:true},consentLog:[]});
+let S=blank(); let view='home', viewArg=null, navStack=[];
+let DB=null, sync='local', writing=false, writeAgain=false, saveTimer=null;
+const backendUrl=()=>String(ls('veda_backend_url')||'').trim().replace(/\/$/,'');
+const aiOn=()=>S.consents.ai && (!!SAMPLE || !!backendUrl());
+let cloudClient=null, cloudClientKey='';
+const cloudUrl=()=>String(ls('veda_supabase_url')||'').trim().replace(/\/$/,'');
+const cloudAnon=()=>String(ls('veda_supabase_anon')||'').trim();
+async function getCloudClient(){const u=cloudUrl(),k=cloudAnon();if(!u||!k)throw new Error('Add your Supabase project URL and anon/publishable key in Privacy & security first.');if(!window.supabase?.createClient)await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',()=>!!window.supabase?.createClient);if(!cloudClient||cloudClientKey!==u+'|'+k){cloudClient=window.supabase.createClient(u,k);cloudClientKey=u+'|'+k}return cloudClient}
+async function cloudAccessToken(){const c=await getCloudClient();const {data,error}=await c.auth.getSession();if(error)throw error;if(!data.session)throw new Error('Sign in to VEDA Cloud Storage in Privacy & security before saving an image.');return data.session.access_token}
+async function cloudApi(path,opts={}){const token=await cloudAccessToken();const r=await fetch(backendUrl()+path,{...opts,headers:{...(opts.headers||{}),Authorization:'Bearer '+token}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.detail||data.message||('Cloud request failed ('+r.status+')'));return data}
+async function uploadCloudDocument(file,doc){const form=new FormData();form.append('file',file,file.name||'medical-document');form.append('title',doc.title||'Medical document');form.append('kind',doc.kind||'other');form.append('record_date',doc.date||'');return cloudApi('/api/files',{method:'POST',body:form})}
+
+/* ---------- persistence: private per-user db doc + local mirror ---------- */
+function load(){const raw=ls(KEY);if(raw){try{S=Object.assign(blank(),JSON.parse(raw))}catch(e){}}}
+function save(){S.rev=Date.now();ls(KEY,JSON.stringify(S));paintSync();if(DB){clearTimeout(saveTimer);saveTimer=setTimeout(pushDb,700)}}
+async function pushDb(){
+  if(!DB)return; if(writing){writeAgain=true;return} writing=true;
+  try{
+    if(S.chat.length>40)S.chat=S.chat.slice(-40);
+    let payload=JSON.stringify(S);
+    if(payload.length>230000){S.chat=S.chat.slice(-8);payload=JSON.stringify(S)}
+    await DB.ref.set({payload,rev:S.rev});sync='synced';
+  }catch(e){sync=(e&&e.code==='quota_exceeded')?'full':'local'}
+  writing=false;paintSync();if(writeAgain){writeAgain=false;pushDb()}
+}
+async function initDb(){
+  try{
+    if(!window.claude)return paintSync();
+    const [user,db]=await Promise.all([claude.use('user'),claude.use('db')]);
+    if(!user||!db)return paintSync();
+    const id=await user.id(); if(!id)return paintSync();
+    const ref=db.doc('data/users/'+id+'/state'); DB={db,ref};
+    ref.onSnapshot(snap=>{
+      if(snap.metadata&&snap.metadata.hasPendingWrites)return;
+      if(!snap.exists){sync='synced';if(S.onboarded)save();paintSync();return}
+      const d=snap.data()||{};let rem;try{rem=JSON.parse(d.payload)}catch(e){return}
+      if((d.rev||0)>S.rev){S=Object.assign(blank(),rem);S.rev=d.rev;ls(KEY,JSON.stringify(S));render()}
+      else if(S.rev>(d.rev||0)&&!writing){pushDb()}
+      sync='synced';paintSync();
+    },()=>{sync='local';paintSync()});
+  }catch(e){paintSync()}
+}
+function paintSync(){const c=$('#syncChip');if(!c)return;
+  const m={synced:['Saved to your private space',''],local:['Saved on this device only',''],full:['Storage full — export your data','']}[sync];
+  c.innerHTML=ic('lock')+`<span class="hide-sm">${m[0]}</span>`;c.className='chip '+(sync==='synced'?'teal':sync==='full'?'red':'plain');c.title=m[0]}
+
+/* ---------- AI (Claude via sample capability) ---------- */
+let SAMPLE=null, IMGOK=false;
+async function initAI(){try{if(!window.claude)return;SAMPLE=await claude.use('sample');if(SAMPLE){try{const l=await SAMPLE.limits();IMGOK=!!l.images}catch(e){}}}catch(e){SAMPLE=null}render()}
+function aiErr(e){const c=e&&e.code;
+  if(c==='rate_limited')return 'Veda has hit a usage limit. Please try again in a little while.';
+  if(c==='not_granted'||c==='sampling_disabled')return 'AI is not enabled for this page. You can still add information manually.';
+  if(c==='image_rejected')return 'That image could not be used. Try a clearer JPEG or PNG photo.';
+  if(c==='invalid_json')return 'Veda could not read the result clearly. Please try again, or use a sharper photo.';
+  return 'Something went wrong while contacting the AI. Please try again.'}
+async function prepImage(file){
+  const bmp=await createImageBitmap(file);const sc=Math.min(1,1800/Math.max(bmp.width,bmp.height));
+  const c=document.createElement('canvas');c.width=Math.round(bmp.width*sc);c.height=Math.round(bmp.height*sc);
+  c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+  return new Promise(r=>c.toBlob(r,'image/jpeg',.88));
+}
+
+/* ============ derive ============ */
+const ALIAS={hb:'hemoglobin',hgb:'hemoglobin',haemoglobin:'hemoglobin',totalcholesterol:'cholesterol',chol:'cholesterol',ldl:'ldlcholesterol',ldlc:'ldlcholesterol',hdl:'hdlcholesterol',hdlc:'hdlcholesterol',fastingglucose:'glucose',fastingbloodsugar:'glucose',fbs:'glucose',fastingplasmaglucose:'glucose',plateletcount:'platelets',wbc:'wbccount',totalwbccount:'wbccount',rbc:'rbccount',triglycerides:'triglycerides',tg:'triglycerides'};
+function keyOf(n){let k=String(n||'').toLowerCase().replace(/[^a-z0-9]/g,'');if(k.startsWith('vitamind')||k.startsWith('25oh')||k==='vitd')return 'vitamind';if(k.startsWith('vitaminb12')||k==='b12')return 'vitaminb12';return ALIAS[k]||k}
+const labs=()=>S.docs.filter(d=>d.params&&d.params.some(p=>p.value!=null)).sort((a,b)=>a.date.localeCompare(b.date)||a.addedAt-b.addedAt);
+function history(key){return labs().map(d=>{const p=d.params.find(p=>keyOf(p.name)===key&&p.value!=null);return p?{docId:d.id,date:d.date,value:p.value,unit:p.unit,lo:p.refLow,hi:p.refHigh,name:p.name}:null}).filter(Boolean)}
+function allKeys(){const m=new Map();labs().forEach(d=>d.params.forEach(p=>{if(p.value!=null){const k=keyOf(p.name);if(!m.has(k))m.set(k,p.name)}}));return m}
+function rangeFlag(v,lo,hi){if(v==null)return null;if(lo!=null&&v<lo)return 'below';if(hi!=null&&v>hi)return 'above';return null}
+function changesFor(doc){
+  const L=labs();const i=L.findIndex(d=>d.id===doc.id);const out=[];
+  doc.params.forEach(p=>{if(p.value==null)return;const k=keyOf(p.name);let prev=null;
+    for(let j=i-1;j>=0;j--){const q=L[j].params.find(q=>keyOf(q.name)===k&&q.value!=null);if(q){prev={v:q.value,date:L[j].date,docId:L[j].id};break}}
+    const pct=prev&&prev.v!==0?(p.value-prev.v)/Math.abs(prev.v)*100:null;
+    const dir=!prev?'new':Math.abs(pct??0)<1?'same':p.value>prev.v?'up':'down';
+    out.push({name:p.name,key:k,cur:p.value,prev:prev?prev.v:null,prevDate:prev?prev.date:null,unit:p.unit,pct,dir,flag:rangeFlag(p.value,p.refLow,p.refHigh),lo:p.refLow,hi:p.refHigh})});
+  return out}
+function latestLab(){const L=labs();return L[L.length-1]||null}
+function changeLine(c){
+  const a=c.dir==='up'?'increased':c.dir==='down'?'decreased':'stayed about the same';
+  let s=c.prev==null?`${c.name} is ${fmtN(c.cur)} ${c.unit||''} (first value on record).`:`${c.name} ${a}: ${fmtN(c.prev)} → ${fmtN(c.cur)} ${c.unit||''}${c.pct!=null&&c.dir!=='same'?` (${c.pct>0?'+':''}${Math.round(c.pct)}%)`:''}.`;
+  if(c.flag){s+=` The report lists a reference range of ${c.lo??'—'}–${c.hi??'—'}; this value is ${c.flag} it.`}
+  return s.replace(/\s+/g,' ')}
+const activeMeds=()=>S.medicines.filter(m=>m.status==='active');
+function conflicts(){
+  const out=[];const meds=activeMeds();
+  const CLS={penicillin:['penicillin','amoxicillin','amoxycillin','ampicillin','cloxacillin','piperacillin','flucloxacillin'],sulfa:['sulfa','sulfamethoxazole','cotrimoxazole','co-trimoxazole','sulfasalazine'],nsaid:['ibuprofen','diclofenac','naproxen','ketorolac','aspirin','nimesulide'],aspirin:['aspirin','acetylsalicylic'],cephalosporin:['cef','cephalexin']};
+  S.allergies.forEach(a=>{const an=a.name.toLowerCase().trim();if(!an)return;const terms=new Set([an,...(CLS[an]||[])]);
+    meds.forEach(m=>{const hay=(m.name+' '+(m.ingredient||'')).toLowerCase();
+      for(const t of terms){if(t&&(hay.includes(t)||(an.length>3&&t.includes(an)&&hay.includes(an)))){out.push({id:'al-'+a.id+'-'+m.id,type:'allergy',title:'Potential conflict detected',text:`Your health records contain an allergy to ${a.name}${a.reaction?` (${a.reaction})`:''}, while ${m.name}${m.ingredient?` (${m.ingredient})`:''} appears in a medicine you recorded${m.start?` on ${fmt(m.start)}`:''}. Please confirm with your doctor or pharmacist.`,medIds:[m.id]});break}}})});
+  const split=s=>String(s||'').toLowerCase().split(/\+|,|\/|&|\band\b/).map(x=>x.replace(/\b\d+(\.\d+)?\s*(mg|mcg|g|ml|iu)\b/g,'').trim()).filter(Boolean);
+  for(let i=0;i<meds.length;i++)for(let j=i+1;j<meds.length;j++){
+    const a=split(meds[i].ingredient||meds[i].name),b=split(meds[j].ingredient||meds[j].name);const shared=a.filter(x=>b.includes(x));
+    if(shared.length)out.push({id:'dup-'+meds[i].id+'-'+meds[j].id,type:'dup',title:'Possible duplicate ingredient',text:`${meds[i].name} and ${meds[j].name} appear to contain the same active ingredient (${shared.join(', ')}) but may be from different brands. Please confirm with your doctor or pharmacist before taking them together.`,medIds:[meds[i].id,meds[j].id]})}
+  return out.filter(c=>!S.dismissed[c.id])}
+function nextAppt(){return S.appointments.filter(a=>a.date>=today()).sort((a,b)=>(a.date+(a.time||'')).localeCompare(b.date+(b.time||'')))[0]||null}
+function timeline(){
+  const ev=[];
+  S.docs.forEach(d=>ev.push({id:'d'+d.id,type:d.kind==='prescription'?'prescription':d.kind==='discharge'?'visit':'report',date:d.date,title:d.title,detail:d.kind==='prescription'?'Prescription added':d.kind==='lab'?'Report uploaded':'Document added',ref:{k:'doc',id:d.id}}));
+  S.medicines.forEach(m=>{if(m.start)ev.push({id:'m'+m.id,type:'medicine',date:m.start,title:`Started ${m.name}${m.strength?' '+m.strength:''}`,detail:m.doctor?`Prescribed by ${m.doctor}`:'Medicine started',ref:{k:'med',id:m.id}})});
+  S.symptoms.forEach(s=>ev.push({id:'s'+s.id,type:'symptom',date:s.date,title:`Symptom: ${s.name}`,detail:[s.severity,s.note].filter(Boolean).join(' · ')||'Symptom recorded',ref:{k:'sym',id:s.id}}));
+  S.appointments.forEach(a=>{const up=a.date>=today();ev.push({id:'a'+a.id,type:up?'followup':'visit',date:a.date,upcoming:up,title:up?`Upcoming: ${a.doctor}`:`Doctor visit: ${a.doctor}`,detail:a.purpose||'Appointment',ref:{k:'appt',id:a.id}})});
+  S.events.forEach(e=>ev.push({id:'e'+e.id,type:e.type||'note',date:e.date,title:e.title,detail:e.detail||'',ref:{k:'evt',id:e.id}}));
+  return ev.sort((a,b)=>b.date.localeCompare(a.date))}
+const EV_ICON={report:'file',prescription:'note',medicine:'pill',symptom:'activity',visit:'steth',followup:'calendar',note:'note'};
+const EV_TONE={report:'',prescription:'teal',medicine:'teal',symptom:'amber',visit:'',followup:'',note:''};
+
+
+function vChallenge(){
+  return `
+  <section class="greet">
+    <p class="eyebrow">ROUND 1 · ALTRIX LABS</p>
+    <h1 class="serif">AI-Powered Personal Health Copilot</h1>
+    <p class="sub mt-s">The challenge behind Veda: bring scattered health records together and help people understand their healthcare journey in simple language.</p>
+  </section>
+  <div class="card mt">
+    <h3>🎯 The problem we're solving</h3>
+    <p>Prescriptions, lab reports, discharge summaries and diagnostic records are often scattered across different places. Veda's goal is to organize these records into one understandable health journey, so people can prepare better questions for their healthcare professionals.</p>
+  </div>
+  <div class="grid mt">
+    <article class="card">
+      <h3>📄 Medical Record Intelligence & OCR</h3>
+      <p>Target workflow: upload a prescription, lab report, discharge summary or diagnostic record; extract medicines, dosages, test values, diagnoses and dates; review extracted fields before saving.</p>
+      <p class="note mt">Extraction must be tested on real sample documents. Handwriting and low-quality scans can produce errors.</p>
+    </article>
+    <article class="card">
+      <h3>🧠 AI health summary</h3>
+      <p>Explain records in plain language, describe what a test measures and flag values outside the reference range printed by the lab. Keep the original value, unit and range visible.</p>
+      <p class="note mt">An explanation is not a diagnosis or a substitute for medical advice.</p>
+    </article>
+    <article class="card">
+      <h3>🗂️ Unified health profile</h3>
+      <p>Bring reports, prescriptions, medicines, appointments and important events into one profile and chronological Health Journey.</p>
+    </article>
+  </div>
+  <section class="card mt">
+    <h3>🔄 Proposed end-to-end data pipeline</h3>
+    <div class="stack mt-s">
+      <div class="sw"><span><b>1. Upload</b><br><span class="note">Image or PDF, with consent</span></span><span>📤</span></div>
+      <div class="sw"><span><b>2. OCR and document parsing</b><br><span class="note">Extract text, dates, medicines, dosages, test values and units</span></span><span>🔎</span></div>
+      <div class="sw"><span><b>3. Validate structured fields</b><br><span class="note">Show confidence and allow corrections before saving</span></span><span>✓</span></div>
+      <div class="sw"><span><b>4. AI explanation</b><br><span class="note">Plain-language summary grounded in the extracted record</span></span><span>✨</span></div>
+      <div class="sw"><span><b>5. Secure storage and timeline</b><br><span class="note">Save reviewed data and connect it to the health journey</span></span><span>🗃️</span></div>
+    </div>
+    <p class="note mt">This describes the target architecture. Only claim a pipeline stage as implemented after it has been connected and tested end to end.</p>
+  </section>
+  <div class="grid mt">
+    <article class="card">
+      <h3>🌐 Bonus: regional languages</h3>
+      <p>Plan for summaries and interface text in Hindi or another regional language. Bilingual or handwritten prescription OCR requires separate testing; translating extracted text alone does not prove OCR support.</p>
+    </article>
+    <article class="card">
+      <h3>🪪 Bonus: ABDM / ABHA readiness</h3>
+      <p>Align the data model with FHIR-style resources such as Patient, Observation, MedicationRequest and DiagnosticReport. A mock ABHA field is a demo only—not a live ABDM connection.</p>
+    </article>
+  </div>
+  <section class="card mt">
+    <h3>🏗️ Architecture at a glance</h3>
+    <p><b>Web interface</b> → upload and consent → <b>OCR/parser</b> → structured field review → <b>AI summarization</b> → <b>database</b> → health profile and timeline.</p>
+    <p class="note mt">For a production system, add access controls, encryption, audit logs, data minimization, retention/deletion controls and clear consent. Keep the original report available for verification.</p>
+  </section>
+  <section class="card mt">
+    <h3>📊 Round 1 evaluation criteria</h3>
+    <div class="sw"><span>AI utilization</span><b>35%</b></div>
+    <div class="sw"><span>Technical architecture</span><b>25%</b></div>
+    <div class="sw"><span>User experience</span><b>20%</b></div>
+    <div class="sw"><span>Healthcare impact and safety</span><b>10%</b></div>
+    <div class="sw"><span>Presentation and demo</span><b>10%</b></div>
+    <p class="note mt">The demo should show one complete flow: upload → extraction → human review → explanation → saved timeline.</p>
+  </section>
+  <section class="card mt">
+    <h3>About Altrix Labs</h3>
+    <p>Altrix Labs describes itself as an AI-native innovation company combining artificial intelligence, data intelligence, automation and digital technologies to build scalable platforms, connected ecosystems and experiences.</p>
+    <p class="mt"><a href="https://www.altrixlabs.ai/" target="_blank" rel="noopener noreferrer">Visit altrixlabs.ai ↗</a></p>
+  </section>
+  ${disclaimer}
+  `;
+}
+
+/* ============ router & render ============ */
+const TABS=[['home','Home','home'],['journey','Journey','route'],['documents','Documents','file'],['appointments','Appointments','calendar'],['copilot','Veda','spark'],['challenge','Challenge','spark']];
+function go(v,arg=null,push=true){if(push&&(v!==view||arg!==viewArg))navStack.push([view,viewArg]);view=v;viewArg=arg;render();window.scrollTo({top:0});}
+function back(){const p=navStack.pop();if(p){view=p[0];viewArg=p[1]}else{view='home';viewArg=null}render()}
+const isTab=v=>TABS.some(t=>t[0]===v);
+function render(){
+  const tabs=$('#tabs');
+  tabs.innerHTML=TABS.map(t=>`<button data-act="nav" data-v="${t[0]}" ${(view===t[0]||(!isTab(view)&&t[0]==={cabinet:'documents',records:'documents',trends:'documents',doc:'documents',brief:'appointments'}[view]))?'aria-current="page"':''}>${ic(t[2])}<span>${t[1]}</span></button>`).join('');
+  const V={home:vHome,journey:vJourney,documents:vDocs,appointments:vAppts,copilot:vCopilot,challenge:vChallenge,cabinet:vCabinet,family:vFamily,emergency:vEmergency,records:vRecords,profile:vProfile,privacy:vPrivacy,doc:vDoc,brief:vBrief,trends:vTrends}[view]||vHome;
+  const wasChat=view==='copilot';
+  $('#main').innerHTML=(isTab(view)?'':`<button class="link" data-act="back" style="margin-bottom:10px">${ic('back')} Back</button>`)+V();
+  if(wasChat)setTimeout(()=>{const c=$('#chatEnd');c&&c.scrollIntoView({block:'end'})},30);
+  paintSync();
+  if(!S.onboarded)openOnboarding();
+}
+function toast(m){const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=m;$('#toastHost').appendChild(t);setTimeout(()=>t.remove(),2800)}
+function sheet(title,html,wide=false){$('#sheetTitle').textContent=title;$('#sheetBody').innerHTML=html;$('#sheetCard').className='sheet-card'+(wide?' wide':'');$('#sheet').hidden=false;$('#sheetCard').scrollTop=0}
+function closeSheet(){$('#sheet').hidden=true;$('#sheetBody').innerHTML=''}
+const val=id=>{const e=$('#'+id);return e?e.value.trim():''};
+const empty=(t,s)=>`<div class="empty"><b>${t}</b>${s||''}</div>`;
+const disclaimer=`<p class="note mt">Veda organizes and explains your own records. It doesn't diagnose, prescribe, or replace a healthcare professional or emergency services.</p>`;
+
+/* ============ views ============ */
+function greetWord(){const h=new Date().getHours();return h<12?'Good morning':h<17?'Good afternoon':'Good evening'}
+function dosePips(m){const n=m.perDay||0;if(!n)return '';const cur=(S.doses[today()]||{})[m.id]||0;
+  return `<div class="pips" role="group" aria-label="Doses taken today for ${esc(m.name)}">${Array.from({length:n},(_,i)=>`<button class="pip ${i<cur?'on':''}" data-act="dose" data-id="${m.id}" data-i="${i}" aria-pressed="${i<cur}" aria-label="Dose ${i+1}">${i<cur?ic('check'):''}</button>`).join('')}</div>`}
+function vHome(){
+  const nm=S.profile.name||'there';const meds=activeMeds(),na=nextAppt(),lab=latestLab(),cf=conflicts();
+  const ch=lab?changesFor(lab).filter(c=>c.dir!=='new'):[];
+  const notable=ch.filter(c=>c.dir!=='same').sort((a,b)=>(b.flag?1:0)-(a.flag?1:0)||Math.abs(b.pct||0)-Math.abs(a.pct||0));
+  let insight=!lab?'Upload your first report and Veda will organize it, add it to your journey, and compare it with future reports.':
+    !ch.length?`Your latest report (${esc(lab.title)}) is saved. Once you add another report, Veda will show what changed.`:
+    notable.length?`Your latest report has some changes compared with your previous report, including ${notable.slice(0,2).map(c=>`${esc(c.name)} (${c.dir})`).join(' and ')}. You may want to discuss these with your healthcare professional.`:'Your latest report shows values very close to your previous report.';
+  const snap=timeline().slice(0,6).reverse();
+  const alerts=[...cf.map(c=>({red:c.type==='allergy',t:c.title,x:c.text,id:c.id}))];
+  if(na&&diffDays(na.date,today())<=7&&!(S.briefs[na.id]))alerts.push({t:'Appointment coming up',x:`${na.doctor} on ${fmt(na.date)}. Prepare a Doctor Brief so you don't forget anything.`,act:'openBrief',aid:na.id});
+  const recent=timeline().filter(e=>!e.upcoming).slice(0,4);
+  return `
+  ${S.demo?`<div class="demo-banner">${ic('alert')}<span><b>Demo data.</b> Everything below is fictional so you can explore. Add your own records any time.</span><button class="btn sm line" data-act="clearDemo">Remove demo data</button></div>`:''}
+  <section class="greet"><h1>${greetWord()}, ${esc(nm)} 👋</h1><p class="sub">Here's what's happening with your health.</p></section>
+  <div class="card mt-s" style="margin-bottom:14px"><h3>${ic('route')} Health journey snapshot</h3>
+    ${snap.length?`<div class="thread">${snap.map(e=>`<button class="n ${e.upcoming?'up':''}" data-act="openEvent" data-id="${esc(e.id)}"><span class="dot"></span><span class="t">${esc(e.title.replace(/^(Doctor visit: |Upcoming: |Symptom: )/,''))}</span><span class="d">${fmtS(e.date)}</span></button>`).join('')}</div>`:empty('Your journey starts here','Upload a report or add an appointment.')}
+    <div class="row sp mt"><span class="note">${S.docs.length} documents · ${S.medicines.length} medicines · ${S.appointments.length} appointments</span><button class="link" data-act="nav" data-v="journey">Open journey ${ic('chev')}</button></div></div>
+  <div class="qa" style="margin-bottom:14px">
+    <button data-act="startUpload" data-kind="lab"><span class="ico">${ic('upload')}</span>Upload report</button>
+    <button data-act="scanMed"><span class="ico">${ic('pill')}</span>Scan medicine</button>
+    <button data-act="startUpload" data-kind="lab" data-cam="1"><span class="ico">${ic('scan')}</span>Scan medical report</button>
+    <button data-act="nav" data-v="copilot"><span class="ico">${ic('spark')}</span>Ask Veda</button>
+    <button data-act="prepDoctor"><span class="ico">${ic('steth')}</span>Prepare for doctor</button>
+    <button data-act="symForm"><span class="ico">${ic('activity')}</span>Log symptom</button>
+    <button class="urgent" data-act="openSOS"><span class="ico">${ic('alert')}</span>Emergency SOS</button>
+  </div>
+  <div class="grid">
+    <div class="card insight"><h3>${ic('spark')} Veda insight</h3><p>“${insight}”</p><div class="row mt wrap"><button class="btn sm" data-act="askQ" data-q="What changed in my latest report?">Explain simply</button>${lab?`<button class="btn sm" data-act="openDoc" data-id="${lab.id}">View report</button>`:''}</div></div>
+    <div class="card"><h3>${ic('calendar')} Next appointment</h3>${na?`<div class="big">${esc(na.doctor)}</div><p class="sub">${fmt(na.date)}${na.time?`, ${esc(na.time)}`:''}${na.purpose?` · ${esc(na.purpose)}`:''}</p><div class="row mt wrap"><button class="btn sm blue" data-act="openBrief" data-id="${na.id}">${S.briefs[na.id]?'Open':'Prepare'} Doctor Brief</button></div>`:empty('No upcoming appointments','<button class="link" data-act="apptForm">Add an appointment</button>')}</div>
+    <div class="card"><h3>${ic('pill')} Current medicines</h3><div class="big">${meds.length} active medicine${meds.length===1?'':'s'}</div>
+      <div class="list mt-s">${meds.slice(0,4).map(m=>`<div class="item"><span class="ico teal">${ic('pill')}</span><div class="txt"><b>${esc(m.name)}</b><span>${esc([m.strength,m.frequency].filter(Boolean).join(' · '))}</span></div>${dosePips(m)}</div>`).join('')||''}</div>
+      <div class="row sp mt"><span class="note">Tap a circle when you take a dose.</span><button class="link" data-act="nav" data-v="cabinet">Medicine cabinet ${ic('chev')}</button></div></div>
+    <div class="card"><h3>${ic('file')} Recent report</h3>${lab?`<div class="big">${esc(lab.title)}</div><p class="sub">${fmt(lab.date)} · ${lab.params.filter(p=>p.value!=null).length} values${ch.filter(c=>c.dir!=='same').length?` · ${ch.filter(c=>c.dir!=='same').length} changed`:''}</p><div class="row mt"><button class="btn sm ghost" data-act="openDoc" data-id="${lab.id}">Open</button><button class="btn sm line" data-act="nav" data-v="trends">Trends</button></div>`:empty('No reports yet','<button class="link" data-act="startUpload" data-kind="lab">Upload your first report</button>')}</div>
+    ${alerts.length?`<div class="card"><h3>${ic('alert')} Important alerts</h3><div class="stack">${alerts.map(a=>`<div class="alert ${a.red?'red':''}">${ic('alert')}<div><b>${esc(a.t)}</b><span>${esc(a.x)}</span>${a.id?`<div class="mt-s"><button class="link" data-act="dismissConflict" data-id="${esc(a.id)}">Dismiss</button> · <button class="link" data-act="nav" data-v="cabinet">Review medicines</button></div>`:''}${a.act?`<div class="mt-s"><button class="link" data-act="${a.act}" data-id="${a.aid}">Prepare brief</button></div>`:''}</div></div>`).join('')}</div></div>`:''}
+    <div class="card"><h3>${ic('activity')} Recent health activity</h3><div class="list">${recent.map(e=>`<button class="item" data-act="openEvent" data-id="${esc(e.id)}"><span class="ico ${EV_TONE[e.type]}">${ic(EV_ICON[e.type])}</span><div class="txt"><b>${esc(e.title)}</b><span>${fmt(e.date)}</span></div></button>`).join('')||empty('Nothing yet')}</div></div>
+    <div class="card"><h3>${ic('users')} Family &amp; SOS</h3><p class="sub">${S.family.length?`${S.family.length} trusted ${S.family.length===1?'person':'people'} with limited access you control.`:'Add someone you trust and choose exactly what they can see.'}</p><div class="row mt wrap"><button class="btn sm ghost" data-act="nav" data-v="family">Family</button><button class="btn sm ghost" data-act="nav" data-v="emergency">Emergency health card</button></div></div>
+  </div>${disclaimer}`}
+
+function vJourney(){
+  const f=viewArg&&viewArg.f||'all';const ev=timeline().filter(e=>f==='all'||e.type===f||(f==='visit'&&(e.type==='followup')));
+  const years=[...new Set(ev.map(e=>e.date.slice(0,4)))];
+  const filters=[['all','All'],['visit','Visits'],['report','Reports'],['prescription','Prescriptions'],['medicine','Medicines'],['symptom','Symptoms']];
+  return `<h2 class="view-title">Health journey</h2><p class="sub">Your visits, reports, prescriptions, medicines and symptoms in one timeline. Tap anything to open it.</p>
+  <div class="tabsbar" role="group" aria-label="Filter events">${filters.map(x=>`<button data-act="jfilter" data-f="${x[0]}" aria-pressed="${f===x[0]}">${x[1]}</button>`).join('')}</div>
+  <div class="row wrap" style="margin-bottom:10px"><button class="btn sm ghost" data-act="symForm">${ic('plus')} Log symptom</button><button class="btn sm ghost" data-act="evtForm">${ic('plus')} Add health event</button></div>
+  <div class="card flat" style="margin-bottom:14px"><h3>${ic('spark')} Ask your health memory</h3><div class="row wrap">${['When did I last have a blood test?','Which medicine was prescribed after my last appointment?','Show me my previous reports','What changed since my last checkup?'].map(q=>`<button class="chip" data-act="askQ" data-q="${esc(q)}" style="cursor:pointer">${esc(q)}</button>`).join('')}</div></div>
+  ${ev.length?years.map(y=>`<div class="tl-year">${y}</div><div class="tl">${ev.filter(e=>e.date.startsWith(y)).map(e=>`<button class="ev t-${e.type} ${e.upcoming?'up':''}" data-act="openEvent" data-id="${esc(e.id)}"><b>${esc(e.title)}</b><span class="meta">${fmt(e.date)}${e.upcoming?' · upcoming':''} · ${esc(e.detail)}</span></button>`).join('')}</div>`).join(''):empty('No events yet','Upload a report, add a medicine or log a symptom to build your timeline.')}`}
+
+function vDocs(){
+  const L=S.docs.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5);const lab=latestLab();
+  return `<h2 class="view-title">Documents</h2><p class="sub">Scan or upload a record. Veda reads it, files it, and compares it with what you already have.</p>
+  <div class="grid mt">
+    <div class="card"><h3>${ic('scan')} Medical report scanner</h3><p class="sub">Lab reports, prescriptions, discharge summaries and other healthcare documents.</p><div class="row mt wrap"><button class="btn blue" data-act="startUpload" data-kind="lab">${ic('upload')} Upload or scan</button></div>${aiOn()?'':`<p class="note mt-s">${SAMPLE?'AI processing is switched off in Privacy.':'AI reading is unavailable here. You can still paste text or enter values manually.'}</p>`}</div>
+    <div class="card"><h3>${ic('pill')} Medicine scanner</h3><p class="sub">Photograph a strip, box or label. If Veda isn't sure, it will say so instead of guessing.</p><div class="row mt wrap"><button class="btn teal" data-act="scanMed">${ic('camera')} Scan medicine</button><button class="btn line" data-act="nav" data-v="cabinet">Medicine cabinet</button></div></div>
+    <div class="card"><h3>${ic('trend')} Compare &amp; trends</h3><p class="sub">${labs().length>=2?'See how any value has moved across your reports.':'Add two or more reports to see trends.'}</p><div class="row mt wrap"><button class="btn ghost" data-act="nav" data-v="trends">Open trends</button></div></div>
+    <div class="card"><h3>${ic('folder')} Health records</h3><p class="sub">${S.docs.length} document${S.docs.length===1?'':'s'} stored. Search, filter, open or delete.</p><div class="row mt wrap"><button class="btn ghost" data-act="nav" data-v="records">Open records</button></div></div>
+  </div>
+  <div class="card mt"><h3>${ic('clock')} Recently added</h3><div class="list">${L.map(d=>docItem(d)).join('')||empty('No documents yet','Upload your first report to get started.')}</div></div>
+  ${lab?`<div class="card mt"><h3>${ic('trend')} What changed in ${esc(lab.title)}</h3>${whatChanged(lab)}</div>`:''}${disclaimer}`}
+function docItem(d){const kind={lab:'Lab report',prescription:'Prescription',discharge:'Discharge summary',other:'Document'}[d.kind]||'Document';
+  return `<button class="item" data-act="openDoc" data-id="${d.id}"><span class="ico">${ic(d.kind==='prescription'?'note':'file')}</span><div class="txt"><b>${esc(d.title)}</b><span>${fmt(d.date)} · ${kind}${d.demo?' · Demo':''}</span></div>${ic('chev')}</button>`}
+function whatChanged(doc){const ch=changesFor(doc);if(!ch.length)return `<p class="sub">No measurable values were found in this document.</p>`;
+  const hasPrev=ch.some(c=>c.dir!=='new');
+  const rows=ch.map(c=>`<tr><td>${esc(c.name)}</td><td class="num">${c.prev==null?'—':fmtN(c.prev)}</td><td class="num"><b>${fmtN(c.cur)}</b> <span class="note">${esc(c.unit||'')}</span></td><td><span class="arrow ${c.dir}" title="${c.dir}">${c.dir==='up'?'↑':c.dir==='down'?'↓':c.dir==='same'?'→':'•'}</span></td><td class="rng note">${c.lo!=null||c.hi!=null?`${c.lo??''}–${c.hi??''}`:''}${c.flag?` <span class="chip amber">${c.flag} range</span>`:''}</td></tr>`).join('');
+  const lines=ch.filter(c=>c.dir!=='same'&&c.dir!=='new').map(c=>`<li>${esc(changeLine(c))}</li>`).join('');
+  return `<div class="tbl-wrap"><table><thead><tr><th>Parameter</th><th>Previous</th><th>Current</th><th>Change</th><th>Reference</th></tr></thead><tbody>${rows}</tbody></table></div>
+  ${hasPrev?(lines?`<ul style="margin:12px 0 0;padding-left:18px">${lines}</ul>`:`<p class="sub mt-s">Values are very close to your previous report.</p>`):`<p class="sub mt-s">This is your first report with these values, so there is nothing to compare yet.</p>`}
+  <p class="note mt-s">This value has changed compared with your previous report. You may want to discuss this with your healthcare professional. Veda doesn't diagnose.</p>`}
+
+function vDoc(){const d=S.docs.find(x=>x.id===viewArg);if(!d)return empty('Document not found');
+  return `<h2 class="view-title">${esc(d.title)}</h2><div class="row wrap"><span class="chip">${fmt(d.date)}</span>${d.lab?`<span class="chip plain">${esc(d.lab)}</span>`:''}${d.doctor?`<span class="chip plain">${esc(d.doctor)}</span>`:''}${d.demo?'<span class="chip amber">Demo data</span>':''}</div>
+  <div class="card mt"><h3>${ic('folder')} Where this came from</h3><p>${d.source==='upload'?`Scanned from ${esc(d.fileName||'an uploaded image')} on ${fmt(iso(d.addedAt))}.${d.cloudPath?' Original file stored in your private VEDA cloud storage.':' Original file is not stored in the cloud; only extracted information is saved in this browser.'}`:d.source==='text'?`Pasted text added on ${fmt(iso(d.addedAt))}.`:d.source==='demo'?'Fictional demo record.':'Entered manually.'}</p></div>
+  ${d.summary?`<div class="card mt"><h3>${ic('note')} Summary</h3><p>${esc(d.summary)}</p></div>`:''}
+  ${d.params&&d.params.some(p=>p.value!=null||p.text)?`<div class="card mt"><h3>${ic('trend')} What changed?</h3>${whatChanged(d)}</div>`:''}
+  ${d.medicines&&d.medicines.length?`<div class="card mt"><h3>${ic('pill')} Medicines in this document</h3><div class="list">${d.medicines.map((m,i)=>`<div class="item"><span class="ico teal">${ic('pill')}</span><div class="txt"><b>${esc(m.name)} ${esc(m.strength||'')}</b><span>${esc([m.ingredient,m.frequency,m.duration].filter(Boolean).join(' · '))}</span></div>${S.medicines.some(x=>x.fromDoc===d.id&&x.name===m.name)?'<span class="chip teal">In cabinet</span>':`<button class="btn sm ghost" data-act="addDocMed" data-id="${d.id}" data-i="${i}">Add</button>`}</div>`).join('')}</div></div>`:''}
+  <div class="row mt wrap">${d.cloudPath?`<button class="btn ghost" data-act="openCloudFile" data-path="${esc(d.cloudPath)}">${ic('file')} Open original image</button>`:''}<button class="btn blue" data-act="askQ" data-q="Explain ${esc(d.title)} in simple language">${ic('spark')} Explain in simple language</button><button class="btn danger" data-act="delDoc" data-id="${d.id}">${ic('trash')} Delete</button></div>${disclaimer}`}
+
+function vRecords(){const q=(viewArg&&viewArg.q)||'',k=(viewArg&&viewArg.k)||'all',s=(viewArg&&viewArg.s)||'new';
+  let L=S.docs.filter(d=>(k==='all'||d.kind===k)&&(!q||(d.title+' '+(d.summary||'')+' '+(d.params||[]).map(p=>p.name).join(' ')).toLowerCase().includes(q.toLowerCase())));
+  L.sort((a,b)=>s==='new'?b.date.localeCompare(a.date):a.date.localeCompare(b.date));
+  return `<h2 class="view-title">Health records</h2><p class="sub">Everything Veda has stored for you.</p>
+  <div class="row wrap mt"><div style="flex:1;min-width:200px"><input id="recQ" type="search" placeholder="Search by test, medicine or title" value="${esc(q)}" aria-label="Search records"></div>
+  <select id="recK" style="width:auto" aria-label="Filter type">${[['all','All types'],['lab','Lab reports'],['prescription','Prescriptions'],['discharge','Discharge summaries'],['other','Other']].map(o=>`<option value="${o[0]}" ${k===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>
+  <select id="recS" style="width:auto" aria-label="Sort by date"><option value="new" ${s==='new'?'selected':''}>Newest first</option><option value="old" ${s==='old'?'selected':''}>Oldest first</option></select></div>
+  <div class="card mt"><div class="list">${L.map(d=>docItem(d)).join('')||empty('No matching records')}</div></div>
+  <div class="row mt"><button class="btn blue" data-act="startUpload" data-kind="lab">${ic('upload')} Add document</button></div>`}
+
+function vTrends(){
+  const keys=[...allKeys()];const L=labs();
+  if(!keys.length)return `<h2 class="view-title">Compare &amp; trends</h2>${empty('No measurable values yet','Upload a lab report to see trends.')}`;
+  const sel=(viewArg&&viewArg.key)||keys[0][0];const h=history(sel);const last=h[h.length-1];
+  const a=(viewArg&&viewArg.a)||(L.length>1?L[L.length-2].id:L[0].id),b=(viewArg&&viewArg.b)||L[L.length-1].id;
+  const da=S.docs.find(d=>d.id===a),db_=S.docs.find(d=>d.id===b);
+  const ks=[...new Set([...(da?da.params:[]),...(db_?db_.params:[])].filter(p=>p.value!=null).map(p=>keyOf(p.name)))];
+  const val=(d,k)=>{const p=d&&d.params.find(p=>keyOf(p.name)===k&&p.value!=null);return p?p:null};
+  return `<h2 class="view-title">Compare &amp; trends</h2><p class="sub">Choose a value to see how it has moved between reports.</p>
+  <div class="card mt"><div class="field"><label for="trKey">Value</label><select id="trKey">${keys.map(k=>`<option value="${esc(k[0])}" ${k[0]===sel?'selected':''}>${esc(k[1])}</option>`).join('')}</select></div>
+  ${trendSVG(h,last&&last.lo,last&&last.hi)}
+  <p class="sub mt-s">${h.length>1?esc(changeLine({name:last.name,dir:last.value>h[h.length-2].value?'up':last.value<h[h.length-2].value?'down':'same',prev:h[h.length-2].value,cur:last.value,unit:last.unit,pct:h[h.length-2].value?(last.value-h[h.length-2].value)/Math.abs(h[h.length-2].value)*100:null,flag:rangeFlag(last.value,last.lo,last.hi),lo:last.lo,hi:last.hi})):'Only one value on record so far.'}</p></div>
+  <div class="card mt"><h3>${ic('file')} Compare two reports</h3><div class="two-col"><div><label for="cmpA">Earlier</label><select id="cmpA">${L.map(d=>`<option value="${d.id}" ${d.id===a?'selected':''}>${esc(d.title)} · ${fmtS(d.date)}</option>`).join('')}</select></div><div><label for="cmpB">Later</label><select id="cmpB">${L.map(d=>`<option value="${d.id}" ${d.id===b?'selected':''}>${esc(d.title)} · ${fmtS(d.date)}</option>`).join('')}</select></div></div>
+  <div class="tbl-wrap mt"><table><thead><tr><th>Parameter</th><th>${fmtS(da&&da.date)}</th><th>${fmtS(db_&&db_.date)}</th><th>Change</th></tr></thead><tbody>${ks.map(k=>{const x=val(da,k),y=val(db_,k);const dir=x&&y?(Math.abs(y.value-x.value)/(Math.abs(x.value)||1)<.01?'same':y.value>x.value?'up':'down'):'new';return `<tr><td>${esc((y||x).name)}</td><td class="num">${x?fmtN(x.value):'—'}</td><td class="num">${y?fmtN(y.value):'—'}</td><td><span class="arrow ${dir}">${dir==='up'?'↑':dir==='down'?'↓':dir==='same'?'→':'•'}</span></td></tr>`}).join('')}</tbody></table></div></div>
+  <div class="card mt"><h3>${ic('spark')} Worth discussing</h3>${(()=>{const c=changesFor(L[L.length-1]).filter(c=>c.flag||(c.pct!=null&&Math.abs(c.pct)>=8));return c.length?`<ul style="margin:0;padding-left:18px">${c.map(x=>`<li>${esc(changeLine(x))}</li>`).join('')}</ul><p class="note mt-s">These are values outside the report's own reference range or that moved noticeably. They are conversation starters for your clinician, not a diagnosis.</p>`:'<p class="sub">Nothing stands out in your latest report.</p>'})()}</div>`}
+function trendSVG(pts,lo,hi){
+  if(!pts.length)return '';const W=320,H=160,P={l:36,r:14,t:14,b:26};const vs=pts.map(p=>p.value);
+  let mn=Math.min(...vs,lo??Infinity),mx=Math.max(...vs,hi??-Infinity);const pad=(mx-mn||1)*.15;mn-=pad;mx+=pad;
+  const x=i=>P.l+(pts.length===1?(W-P.l-P.r)/2:i*(W-P.l-P.r)/(pts.length-1)),y=v=>P.t+(mx-v)/(mx-mn)*(H-P.t-P.b);
+  const band=(lo!=null&&hi!=null)?`<rect class="band" x="${P.l}" y="${y(hi)}" width="${W-P.l-P.r}" height="${Math.max(2,y(lo)-y(hi))}"/>`:'';
+  const path=pts.map((p,i)=>(i?'L':'M')+x(i)+' '+y(p.value)).join(' ');
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Trend chart"><line class="grid" x1="${P.l}" x2="${W-P.r}" y1="${H-P.b}" y2="${H-P.b}"/>${band}<text x="4" y="${y(mx-pad)+3}">${fmtN(mx-pad)}</text><text x="4" y="${y(mn+pad)+3}">${fmtN(mn+pad)}</text>${pts.length>1?`<path class="ln" d="${path}"/>`:''}${pts.map((p,i)=>`<circle class="pt" cx="${x(i)}" cy="${y(p.value)}" r="4"/><text x="${x(i)}" y="${y(p.value)-9}" text-anchor="middle" style="fill:var(--ink);font-weight:600">${fmtN(p.value)}</text><text x="${x(i)}" y="${H-8}" text-anchor="middle">${fmtS(p.date)}</text>`).join('')}</svg>${band?`<p class="note">Shaded band: the reference range printed on the report.</p>`:''}`}
+
+function vCabinet(){const act=activeMeds(),done=S.medicines.filter(m=>m.status!=='active');const cf=conflicts();
+  const card=m=>`<div class="card flat" style="margin-bottom:10px"><div class="row sp"><div><b style="font-size:17px">${esc(m.name)}</b> <span class="chip ${m.status==='active'?'teal':'plain'}">${m.status==='active'?'Active':'Completed'}</span>${m.demo?' <span class="chip amber">Demo</span>':''}</div><button class="iconbtn" data-act="medForm" data-id="${m.id}" aria-label="Edit ${esc(m.name)}">${ic('edit')}</button></div>
+  <p class="sub">${esc([m.ingredient&&'Contains '+m.ingredient,m.strength].filter(Boolean).join(' · '))}</p>
+  <p class="mt-s">${esc([m.dosage,m.frequency].filter(Boolean).join(' · ')||'Dosage not entered')}</p>
+  <p class="note">${m.start?'Started '+fmt(m.start):''}${m.end?' · Ends '+fmt(m.end):''}${m.doctor?' · '+esc(m.doctor):''}</p>${m.notes?`<p class="note">${esc(m.notes)}</p>`:''}
+  ${m.status==='active'?`<div class="row mt-s wrap">${dosePips(m)}<span class="spacer"></span><button class="btn sm line" data-act="completeMed" data-id="${m.id}">Mark completed</button></div>`:''}</div>`;
+  return `<h2 class="view-title">Medicine cabinet</h2><p class="sub">Your medicines, with dosage details you confirm yourself.</p>
+  <div class="row wrap mt"><button class="btn blue" data-act="medForm">${ic('plus')} Add medicine</button><button class="btn teal" data-act="scanMed">${ic('camera')} Scan medicine</button><button class="btn line" data-act="startUpload" data-kind="prescription">${ic('upload')} From prescription</button></div>
+  ${cf.length?`<div class="stack mt">${cf.map(c=>`<div class="alert ${c.type==='allergy'?'red':''}">${ic('alert')}<div><b>⚠️ ${esc(c.title)}</b><span>${esc(c.text)}</span><div class="mt-s"><button class="link" data-act="dismissConflict" data-id="${esc(c.id)}">I've checked this — dismiss</button></div></div></div>`).join('')}<p class="note">Veda flags possible conflicts. It can't make medical decisions. Don't start, stop or change any medicine without asking your doctor or pharmacist.</p></div>`:''}
+  <h3 class="mt" style="margin-bottom:8px">Active (${act.length})</h3>${act.map(card).join('')||empty('No active medicines')}
+  ${done.length?`<h3 class="mt" style="margin-bottom:8px">Completed (${done.length})</h3>${done.map(card).join('')}`:''}
+  <div class="card mt"><h3>${ic('heart')} Allergies</h3><div class="row wrap">${S.allergies.map(a=>`<span class="chip red">${esc(a.name)}${a.reaction?' · '+esc(a.reaction):''} <button class="link" style="color:inherit" data-act="delAllergy" data-id="${a.id}" aria-label="Remove ${esc(a.name)}">${ic('x')}</button></span>`).join('')||'<span class="sub">None recorded</span>'}</div>
+  <div class="row mt wrap"><input id="alName" placeholder="Allergy, e.g. Penicillin" style="flex:1;min-width:150px"><input id="alReact" placeholder="Reaction (optional)" style="flex:1;min-width:150px"><button class="btn sm ghost" data-act="addAllergy">Add</button></div></div>`}
+
+function vAppts(){const up=S.appointments.filter(a=>a.date>=today()).sort((a,b)=>a.date.localeCompare(b.date)),pa=S.appointments.filter(a=>a.date<today()).sort((a,b)=>b.date.localeCompare(a.date));
+  const card=(a,isUp)=>{const rel=S.docs.filter(d=>d.date<=a.date&&diffDays(a.date,d.date)<=120&&d.kind==='lab').slice(-2);
+   return `<div class="card" style="margin-bottom:12px"><div class="row sp"><div><b style="font-size:18px">${esc(a.doctor)}</b>${a.specialty?` <span class="sub">${esc(a.specialty)}</span>`:''}<p class="sub">${fmt(a.date)}${a.time?' · '+esc(a.time):''}${a.location?' · '+esc(a.location):''}</p></div><button class="iconbtn" data-act="apptForm" data-id="${a.id}" aria-label="Edit appointment">${ic('edit')}</button></div>
+   ${a.purpose?`<p class="mt-s">${esc(a.purpose)}</p>`:''}${a.notes?`<p class="note">${esc(a.notes)}</p>`:''}${a.demo?'<span class="chip amber mt-s">Demo</span>':''}
+   ${rel.length?`<p class="note mt-s">Relevant reports: ${rel.map(d=>`<button class="link" data-act="openDoc" data-id="${d.id}">${esc(d.title)}</button>`).join(', ')}</p>`:''}
+   <div class="row mt wrap"><button class="btn sm ${isUp?'blue':'ghost'}" data-act="openBrief" data-id="${a.id}">${ic('steth')} ${S.briefs[a.id]?'Open':'Prepare'} Doctor Brief</button></div></div>`};
+  return `<h2 class="view-title">Appointments</h2><p class="sub">Prepare before you go, and keep notes after.</p><div class="row mt"><button class="btn blue" data-act="apptForm">${ic('plus')} Add appointment</button></div>
+  <h3 class="mt" style="margin-bottom:8px">Upcoming</h3>${up.map(a=>card(a,true)).join('')||empty('No upcoming appointments')}
+  <h3 class="mt" style="margin-bottom:8px">Previous</h3>${pa.map(a=>card(a,false)).join('')||empty('No previous appointments')}`}
+
+/* ---------- Doctor Brief ---------- */
+const BRIEF_SECTIONS=[['summary','Patient summary'],['changes','Recent changes'],['meds','Current medicines'],['reports','Recent reports'],['symptoms','Symptoms and events I recorded'],['visits','Previous relevant appointments'],['questions','Questions I want to ask']];
+function buildBrief(a){
+  const p=S.profile,ag=age(p.dob);
+  const lab=latestLab();const ch=lab?changesFor(lab).filter(c=>c.dir!=='new'&&(c.dir!=='same'||c.flag)):[];
+  const since=addDays(-30,D(a.date));const sy={};S.symptoms.filter(s=>s.date>=since&&s.date<=a.date).forEach(s=>{(sy[s.name]=sy[s.name]||[]).push(s)});
+  const cf=conflicts();const q=[];
+  ch.filter(c=>c.flag||Math.abs(c.pct||0)>=8).slice(0,3).forEach(c=>q.push(`Should I repeat or follow up on my ${c.name} result?`));
+  if(activeMeds().length)q.push('Should my current medicines be reviewed?');
+  cf.forEach(c=>q.push(c.type==='allergy'?`My records list an allergy that may relate to a medicine I've been given. Can we confirm it's suitable?`:`Two of my medicines may contain the same ingredient. Can we check I'm not duplicating it?`));
+  return {summary:[`${p.name||'Patient'}${ag!=null?`, ${ag}`:''}${p.sex?`, ${p.sex}`:''}. Appointment with ${a.doctor} on ${fmt(a.date)}${a.purpose?` — ${a.purpose}`:''}.`,S.allergies.length?`Allergies: ${S.allergies.map(x=>x.name+(x.reaction?` (${x.reaction})`:'')).join(', ')}.`:'No allergies recorded.',p.conditions?`Conditions I've noted: ${p.conditions}.`:''].filter(Boolean).join(' '),
+   changes:ch.map(changeLine).join('\n')||'No changes recorded since the previous report.',
+   meds:activeMeds().map(m=>`${m.name}${m.strength?' '+m.strength:''}${m.frequency?' — '+m.frequency:''}${m.doctor?' ('+m.doctor+')':''}`).join('\n')||'None recorded.',
+   reports:S.docs.filter(d=>d.date<=a.date&&diffDays(a.date,d.date)<=120).sort((x,y)=>y.date.localeCompare(x.date)).slice(0,4).map(d=>`${d.title} — ${fmt(d.date)}`).join('\n')||'None in the last 4 months.',
+   symptoms:Object.entries(sy).map(([n,l])=>`${n} recorded ${l.length} time${l.length>1?'s':''} in the last 30 days${l.some(x=>x.severity)?` (severity: ${[...new Set(l.map(x=>x.severity).filter(Boolean))].join(', ')})`:''}`).join('\n')||'No symptoms recorded in the last 30 days.',
+   visits:S.appointments.filter(x=>x.date<today()&&x.id!==a.id).sort((x,y)=>y.date.localeCompare(x.date)).slice(0,2).map(x=>`${x.doctor} — ${fmt(x.date)}${x.purpose?': '+x.purpose:''}${x.notes?' ('+x.notes+')':''}`).join('\n')||'None recorded.',
+   questions:[...new Set(q)].map(x=>'• '+x).join('\n')||'• '}}
+function vBrief(){const a=S.appointments.find(x=>x.id===viewArg);if(!a)return empty('Appointment not found');
+  if(!S.briefs[a.id])S.briefs[a.id]={sections:buildBrief(a),include:Object.fromEntries(BRIEF_SECTIONS.map(s=>[s[0],true])),updated:Date.now()};
+  const b=S.briefs[a.id];
+  return `<h2 class="view-title">Doctor Brief</h2><p class="sub">${esc(a.doctor)} · ${fmt(a.date)}${a.time?', '+esc(a.time):''}. Edit anything, then choose exactly what to share.</p>
+  <div class="stack mt">${BRIEF_SECTIONS.map(s=>`<div class="card"><div class="row sp"><label for="bf_${s[0]}" style="margin:0;font-size:15px;color:var(--ink)">${s[1]}</label><label class="row" style="margin:0;font-weight:500"><input type="checkbox" id="bi_${s[0]}" ${b.include[s[0]]?'checked':''} style="width:20px;min-height:20px"> Share</label></div><textarea id="bf_${s[0]}" class="mt-s" rows="${s[0]==='summary'?3:4}">${esc(b.sections[s[0]])}</textarea></div>`).join('')}</div>
+  <div class="row mt wrap"><button class="btn ghost" data-act="saveBrief" data-id="${a.id}">Save edits</button><button class="btn line" data-act="regenBrief" data-id="${a.id}">Rebuild from my records</button>${aiOn()?`<button class="btn line" data-act="suggestQ" data-id="${a.id}">${ic('spark')} Suggest questions</button>`:''}<button class="btn blue" data-act="shareBrief" data-id="${a.id}">${ic('share')} Share Doctor Brief</button></div>
+  <p class="note mt">Nothing leaves your account until you choose Copy, Download or Share. Only the sections ticked “Share” are included.</p>`}
+function collectBrief(id){const a=S.appointments.find(x=>x.id===id),b=S.briefs[id];if(!a||!b)return null;
+  BRIEF_SECTIONS.forEach(s=>{const t=$('#bf_'+s[0]),i=$('#bi_'+s[0]);if(t)b.sections[s[0]]=t.value;if(i)b.include[s[0]]=i.checked});b.updated=Date.now();return {a,b}}
+function briefText(a,b){return `DOCTOR BRIEF — ${S.profile.name||'Patient'}\nAppointment: ${a.doctor}, ${fmt(a.date)}${a.time?' '+a.time:''}\n\n`+BRIEF_SECTIONS.filter(s=>b.include[s[0]]&&b.sections[s[0]].trim()).map(s=>`${s[1].toUpperCase()}\n${b.sections[s[0]].trim()}`).join('\n\n')+`\n\nPrepared with Veda from the patient's own records. This is a summary for discussion, not a diagnosis.`}
+
+/* ---------- Copilot ---------- */
+function vCopilot(){
+  const chips=['What changed in my latest report?','When was my last blood test?','What medicines am I currently taking?',"Prepare me for my next appointment",'Show me my health journey from the last six months','Which report contains my cholesterol result?','Explain my latest report in simple language'];
+  return `<h2 class="view-title">Ask Veda</h2><p class="sub">Questions about your own records. Veda shows where each answer came from, and says so when it doesn't know.</p>
+  ${aiOn()?'':`<div class="alert mt-s">${ic('alert')}<div><b>Simple answers only</b><span>${SAMPLE?'AI is switched off in Privacy, so Veda can answer a limited set of questions from your records.':'AI explanations aren\'t available in this view, so Veda can answer a limited set of questions from your records.'}</span></div></div>`}
+  <div class="chat mt" id="chat" aria-live="polite">${S.chat.length?S.chat.map(msgHTML).join(''):`<div class="empty"><b>Try asking</b><div class="row wrap" style="justify-content:center;margin-top:10px">${chips.map(c=>`<button class="chip" style="cursor:pointer" data-act="askQ" data-q="${esc(c)}">${esc(c)}</button>`).join('')}</div></div>`}<div id="chatEnd"></div></div>
+  <div class="composer"><input id="chatIn" placeholder="Ask about your reports, medicines or appointments" aria-label="Ask Veda" autocomplete="off"><button class="btn blue" data-act="chatSend" aria-label="Send">${ic('send')}</button></div>
+  ${S.chat.length?`<button class="link" data-act="clearChat">Clear conversation</button>`:''}${disclaimer}`}
+function msgHTML(m){if(m.r==='u')return `<div class="msg u">${esc(m.t)}</div>`;
+  return `<div class="msg a">${esc(m.t)}${m.src&&m.src.length?`<div class="src">${m.src.map(s=>`<button data-act="openSrc" data-k="${esc(s.kind)}" data-id="${esc(s.id)}">${ic('file')}Source: ${esc(s.label)}</button>`).join('')}</div>`:''}</div>`}
+function recordsContext(){return {today:today(),patient:{name:S.profile.name,age:age(S.profile.dob),sex:S.profile.sex,conditions:S.profile.conditions,allergies:S.allergies.map(a=>a.name+(a.reaction?` (${a.reaction})`:''))},
+  documents:S.docs.map(d=>({id:d.id,kind:d.kind,title:d.title,date:d.date,doctor:d.doctor,lab:d.lab,summary:d.summary,values:(d.params||[]).map(p=>({name:p.name,value:p.value??p.text,unit:p.unit,refLow:p.refLow,refHigh:p.refHigh})),medicines:d.medicines})),
+  medicines:S.medicines.map(m=>({id:m.id,name:m.name,ingredient:m.ingredient,strength:m.strength,frequency:m.frequency,start:m.start,end:m.end,doctor:m.doctor,status:m.status})),
+  appointments:S.appointments.map(a=>({id:a.id,doctor:a.doctor,date:a.date,time:a.time,purpose:a.purpose,notes:a.notes})),
+  symptoms:S.symptoms.map(s=>({id:s.id,name:s.name,date:s.date,severity:s.severity,note:s.note})),
+  possibleConflicts:conflicts().map(c=>c.text)}}
+async function ask(q){
+  S.chat.push({r:'u',t:q});save();
+  if(view!=='copilot')go('copilot');else render();
+  const chat=$('#chat');const think=document.createElement('div');think.className='msg a';think.id='thinking';think.innerHTML='<span class="dots"><span></span><span></span><span></span></span>';chat&&chat.insertBefore(think,$('#chatEnd'));$('#chatEnd')&&$('#chatEnd').scrollIntoView({block:'end'});
+  let res;
+  if(backendUrl() && S.consents.ai){
+    try{const response=await fetch(backendUrl()+'/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,records:recordsContext(),history:S.chat.slice(-8)})});if(!response.ok)throw new Error('AI backend request failed ('+response.status+').');const data=await response.json();res={t:String(data.answer||'I could not find that in your records.'),src:(data.sources||[]).filter(x=>x&&x.id).slice(0,5)}}catch(e){res={t:'The AI backend could not be reached. Check the backend URL in Privacy. '+e.message,src:[]}}
+  }else if(aiOn()){
+    try{
+      const hist=S.chat.slice(-9,-1).map(m=>(m.r==='u'?'User: ':'Veda: ')+m.t).join('\n');
+      const prompt=`You are Veda, a personal health-records assistant. Answer ONLY using the RECORDS JSON below.
+Rules: explain, organize, summarize and compare the person's own records. Never diagnose, never prescribe, never tell the person to start, stop or change a medicine, never replace emergency services. If the records don't contain the answer, say so plainly and set notEnough to true; never invent values, dates or documents. When values changed, describe the change neutrally and suggest discussing it with a healthcare professional. If the person describes an emergency or severe symptoms, tell them to contact local emergency services (${S.profile.emergencyNumber||'112'}) immediately. Use short plain language, no markdown.
+Return ONLY JSON: {"answer": string, "sources": [{"kind":"doc"|"medicine"|"appointment"|"symptom","id": string,"label": string}], "notEnough": boolean}. Use ids exactly as they appear in RECORDS. Include a source whenever the answer uses a record.
+RECORDS: ${JSON.stringify(recordsContext())}
+CONVERSATION SO FAR:\n${hist}
+USER QUESTION: ${q}`;
+      const r=await SAMPLE.json(prompt,{modelTier:'default',cache:false});
+      res={t:String(r.answer||'I could not find that in your records.'),src:(r.sources||[]).filter(s=>s&&s.id).slice(0,5)};
+    }catch(e){res={t:aiErr(e),src:[]}}
+  }else res=localAnswer(q);
+  S.chat.push({r:'a',t:res.t,src:res.src});save();render();
+}
+function localAnswer(q){const t=q.toLowerCase();const lab=latestLab();
+  if(/medicine|medication|taking/.test(t)){const m=activeMeds();return {t:m.length?`You have ${m.length} active medicine${m.length>1?'s':''}:\n`+m.map(x=>`• ${x.name}${x.strength?' '+x.strength:''}${x.frequency?' — '+x.frequency:''}`).join('\n'):'No active medicines are recorded.',src:m.map(x=>({kind:'medicine',id:x.id,label:x.name}))}}
+  if(/changed|difference|compare/.test(t)&&lab){const c=changesFor(lab).filter(x=>x.dir!=='new'&&x.dir!=='same');return {t:c.length?c.map(changeLine).join('\n')+'\n\nYou may want to discuss these changes with your healthcare professional.':'No changes compared with a previous report were found.',src:[{kind:'doc',id:lab.id,label:lab.title}]}}
+  const key=[...allKeys()].find(([k,n])=>t.includes(n.toLowerCase())||t.includes(k));
+  if(key){const h=history(key[0]);const l=h[h.length-1];const d=S.docs.find(x=>x.id===l.docId);return {t:`Your ${key[1]} was ${fmtN(l.value)} ${l.unit||''} on ${fmt(l.date)}${h.length>1?` (previously ${fmtN(h[h.length-2].value)})`:''}.`,src:[{kind:'doc',id:d.id,label:d.title}]}}
+  if(/blood|test|report|last/.test(t)&&lab)return {t:`Your most recent report is ${lab.title} from ${fmt(lab.date)}.`,src:[{kind:'doc',id:lab.id,label:lab.title}]};
+  if(/appointment|prepare|doctor/.test(t)){const a=nextAppt();return a?{t:`Your next appointment is with ${a.doctor} on ${fmt(a.date)}. Open the Appointments tab to prepare a Doctor Brief.`,src:[{kind:'appointment',id:a.id,label:a.doctor+' — '+fmtS(a.date)}]}:{t:'You have no upcoming appointments recorded.',src:[]}}
+  return {t:"I don't have enough information in your records to answer that.",src:[]}}
+
+/* ---------- Family / Emergency / Profile / Privacy ---------- */
+const FAM_CATS=[['medicines','Medicines'],['appointments','Appointments'],['reports','Reports'],['emergency','Emergency information']];
+function vFamily(){return `<h2 class="view-title">Family coordination</h2><p class="sub">Add someone you trust and choose exactly what they can see. Nothing else is shared.</p>
+  <div class="row mt"><button class="btn blue" data-act="famForm">${ic('plus')} Add family member</button></div>
+  <div class="stack mt">${S.family.map(f=>`<div class="card"><div class="row sp"><div><b style="font-size:18px">${esc(f.name)}</b> <span class="sub">${esc(f.relation||'')}</span>${f.demo?' <span class="chip amber">Demo</span>':''}<p class="note">Consent given ${fmt(f.consentDate)}${f.phone?' · '+esc(f.phone):''}</p></div><button class="iconbtn" data-act="famForm" data-id="${f.id}" aria-label="Edit ${esc(f.name)}">${ic('edit')}</button></div>
+  <div class="row wrap mt-s">${FAM_CATS.map(c=>`<span class="chip ${f.access[c[0]]?'teal':'plain'}">${f.access[c[0]]?ic('check'):''}${c[1]}</span>`).join('')}</div>
+  <div class="row mt wrap"><button class="btn sm ghost" data-act="previewFam" data-id="${f.id}">Preview what ${esc(f.name)} can see</button><button class="btn sm line" data-act="shareFam" data-id="${f.id}">${ic('share')} Send them this</button></div></div>`).join('')||empty('No family members yet','Add someone only with their agreement.')}</div>
+  <div class="card mt"><h3>${ic('lock')} How sharing works</h3><p class="sub">Veda doesn't give anyone access to your account. When you tap “Send them this”, only the categories you ticked are put into a message you choose how to send. Remove a person at any time.</p></div>`}
+function famSummary(f){const parts=[`Health information shared by ${S.profile.name||'a family member'} with ${f.name}.`];
+  if(f.access.medicines)parts.push('MEDICINES\n'+(activeMeds().map(m=>`• ${m.name} ${m.strength||''} ${m.frequency?'— '+m.frequency:''}`).join('\n')||'None'));
+  if(f.access.appointments)parts.push('APPOINTMENTS\n'+(S.appointments.filter(a=>a.date>=today()).map(a=>`• ${a.doctor}, ${fmt(a.date)} ${a.time||''}`).join('\n')||'None upcoming'));
+  if(f.access.reports)parts.push('REPORTS\n'+(S.docs.slice(-5).map(d=>`• ${d.title} — ${fmt(d.date)}`).join('\n')||'None'));
+  if(f.access.emergency)parts.push(emergencyText());
+  return parts.join('\n\n')}
+function emergencyText(){const p=S.profile;return `EMERGENCY INFORMATION\nName: ${p.name||'—'}\nBlood group: ${p.blood||'Not provided'}\nAllergies: ${S.allergies.map(a=>a.name).join(', ')||'None recorded'}\nCurrent medicines: ${activeMeds().map(m=>m.name+(m.strength?' '+m.strength:'')).join(', ')||'None recorded'}\nImportant: ${p.conditions||p.emergencyNote||'—'}\nContacts: ${p.contacts.map(c=>`${c.name} ${c.phone}`).join('; ')||'—'}`}
+function vEmergency(){const p=S.profile;
+  return `<h2 class="view-title">Emergency health card</h2><p class="sub">Quick facts a responder or relative may need. You decide what's on it.</p>
+  <button class="sosbig mt" data-act="openSOS">${ic('alert')} Emergency SOS</button>
+  <div class="card mt"><div class="row sp"><h3 style="margin:0">${esc(p.name||'Your name')}</h3><button class="btn sm line" data-act="nav" data-v="profile">Edit</button></div>
+  <table style="margin-top:8px"><tbody>
+  <tr><td class="note">Blood group</td><td>${esc(p.blood||'Not provided')}</td></tr>
+  <tr><td class="note">Allergies</td><td>${S.allergies.map(a=>`<span class="chip red">${esc(a.name)}</span>`).join(' ')||'None recorded'}</td></tr>
+  <tr><td class="note">Current medicines</td><td>${activeMeds().map(m=>esc(m.name+(m.strength?' '+m.strength:''))).join(', ')||'None recorded'}</td></tr>
+  <tr><td class="note">Important information</td><td>${esc(p.conditions||p.emergencyNote||'—')}</td></tr>
+  <tr><td class="note">Doctor</td><td>${p.doctors.map(d=>esc(d.name+(d.phone?' · '+d.phone:''))).join('<br>')||'—'}</td></tr>
+  <tr><td class="note">Emergency contacts</td><td>${p.contacts.map(c=>`${esc(c.name)} ${c.phone?`<a href="tel:${esc(c.phone.replace(/[^+\d]/g,''))}">${esc(c.phone)}</a>`:''}`).join('<br>')||'<button class="link" data-act="nav" data-v="profile">Add an emergency contact</button>'}</td></tr></tbody></table></div>
+  <p class="note mt">Veda is not a replacement for emergency services. In an emergency call ${esc(p.emergencyNumber||'112')} (or your local number) first.</p>`}
+function openSOS(){const p=S.profile,num=(p.emergencyNumber||'112').replace(/[^+\d]/g,'');
+  sheet('Emergency SOS',`<div class="alert red">${ic('alert')}<div><b>Veda is not a replacement for emergency services.</b>If this is an emergency, call your local emergency number now.</div></div>
+  <a class="sosbig mt" style="text-decoration:none" href="tel:${esc(num)}">${ic('phone')} Call ${esc(p.emergencyNumber||'112')}</a>
+  <h4 class="mt" style="margin-bottom:6px">Your emergency contacts</h4>
+  <div class="list">${p.contacts.map(c=>`<div class="item"><span class="ico red">${ic('user')}</span><div class="txt"><b>${esc(c.name)}</b><span>${esc(c.relation||'')} ${esc(c.phone||'')}</span></div>${c.phone?`<a class="btn sm blue" href="tel:${esc(c.phone.replace(/[^+\d]/g,''))}">Call</a><a class="btn sm ghost" href="sms:${esc(c.phone.replace(/[^+\d]/g,''))}?&body=${encodeURIComponent('I need help. My emergency details:\n'+emergencyText())}">Text card</a>`:''}</div>`).join('')||empty('No emergency contacts yet','<button class="link" data-act="goProfile">Add one in your profile</button>')}</div>
+  <h4 class="mt" style="margin-bottom:6px">Emergency health card</h4><pre style="white-space:pre-wrap;font-family:var(--sans);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:0">${esc(emergencyText())}</pre>
+  <div class="row mt wrap"><button class="btn ghost" data-act="copyText" data-t="emergency">Copy card</button></div>`)}
+function vProfile(){const p=S.profile;
+  return `<h2 class="view-title">My profile</h2><p class="sub">Only you can see this unless you share it.</p>
+  <div class="card mt"><div class="two-col"><div class="field"><label for="pf_name">Name</label><input id="pf_name" value="${esc(p.name)}"></div><div class="field"><label for="pf_dob">Date of birth</label><input id="pf_dob" type="date" value="${esc(p.dob)}"></div></div>
+  <div class="two-col"><div class="field"><label for="pf_sex">Sex (optional)</label><input id="pf_sex" value="${esc(p.sex)}"></div><div class="field"><label for="pf_blood">Blood group (optional)</label><input id="pf_blood" value="${esc(p.blood)}" placeholder="e.g. O+"></div></div>
+  <div class="two-col"><div class="field"><label for="pf_h">Height (optional)</label><input id="pf_h" value="${esc(p.height)}"></div><div class="field"><label for="pf_w">Weight (optional)</label><input id="pf_w" value="${esc(p.weight)}"></div></div>
+  <div class="field"><label for="pf_cond">Health conditions you want on record (optional)</label><textarea id="pf_cond">${esc(p.conditions)}</textarea></div>
+  <div class="field"><label for="pf_en">Local emergency number</label><input id="pf_en" value="${esc(p.emergencyNumber)}"></div>
+  <button class="btn blue" data-act="saveProfile">Save profile</button></div>
+  <div class="card mt"><h3>${ic('phone')} Emergency contacts</h3><div class="list">${p.contacts.map(c=>`<div class="item"><span class="ico">${ic('user')}</span><div class="txt"><b>${esc(c.name)}</b><span>${esc(c.relation||'')} ${esc(c.phone||'')}</span></div><button class="iconbtn" data-act="delContact" data-id="${c.id}" aria-label="Remove ${esc(c.name)}">${ic('trash')}</button></div>`).join('')||empty('None yet')}</div>
+  <div class="two-col mt"><input id="ct_n" placeholder="Name"><input id="ct_p" placeholder="Phone" inputmode="tel"></div><div class="row mt"><input id="ct_r" placeholder="Relationship"><button class="btn ghost" data-act="addContact">Add</button></div></div>
+  <div class="card mt"><h3>${ic('steth')} Doctors</h3><div class="list">${p.doctors.map(c=>`<div class="item"><span class="ico">${ic('steth')}</span><div class="txt"><b>${esc(c.name)}</b><span>${esc(c.phone||'')}</span></div><button class="iconbtn" data-act="delDoctor" data-id="${c.id}" aria-label="Remove ${esc(c.name)}">${ic('trash')}</button></div>`).join('')||empty('None yet')}</div>
+  <div class="row mt"><input id="dr_n" placeholder="Doctor name"><input id="dr_p" placeholder="Phone"><button class="btn ghost" data-act="addDoctor">Add</button></div></div>
+  <div class="card mt"><h3>${ic('users')} Family &amp; preferences</h3><div class="row wrap"><button class="btn ghost" data-act="nav" data-v="family">Family members (${S.family.length})</button><button class="btn ghost" data-act="nav" data-v="privacy">Privacy &amp; security</button></div></div>`}
+function vPrivacy(){const n=S.docs.length;
+  return `<h2 class="view-title">Privacy &amp; security</h2><p class="sub">What Veda stores, who can see it, and how to take it back.</p>
+  <div class="card mt"><h3>${ic('lock')} What's stored</h3><p>${n} documents, ${S.medicines.length} medicines, ${S.appointments.length} appointments, ${S.symptoms.length} symptom entries, ${S.family.length} family members, plus your profile and chat history.</p><p class="note mt-s">${sync==='synced'?'Stored in your private space on this page. Other people who open this page cannot read it, including the owner.':'Stored in this browser only. It will be lost if you clear site data, so export a copy.'}</p></div>
+  <div class="card mt"><h3>${ic('shield')} Consent</h3>
+   <div class="sw"><div><b>AI reading &amp; answers</b><p class="note">Allows document processing and answers. With a configured backend, text is sent to that service; review its privacy policy first.</p></div><button class="tog" role="switch" aria-checked="${S.consents.ai}" data-act="toggleConsent" data-c="ai" aria-label="AI reading and answers"></button></div>
+   <div class="sw"><div><b>Family sharing</b><p class="note">Allows adding family members and sending them summaries.</p></div><button class="tog" role="switch" aria-checked="${S.consents.family}" data-act="toggleConsent" data-c="family" aria-label="Family sharing"></button></div></div>
+  <div class="card mt"><h3>${ic('spark')} How AI processing works</h3><ul class="sub" style="margin:0;padding-left:18px"><li>Images/PDFs are OCR-processed in your browser where possible. If a backend is configured, extracted text and the selected document type are sent for AI structuring. Check the backend privacy policy before using real records.</li><li>When a backend is configured, your question and selected health-record context are sent to it to generate an answer.</li><li>Veda explains and organizes. It doesn't diagnose or prescribe.</li><li>Switch AI off above and Veda still works for manual entry and local search.</li></ul></div>
+  <div class="card mt"><h3>${ic('server')} AI backend connection</h3><p class="sub">Optional: connect a deployed FastAPI backend to enable AI-powered extraction and record-grounded answers. Browser OCR can work without it, but local extraction is basic and must be checked.</p><div class="field mt-s"><label for="backendUrlInput">Backend URL</label><input id="backendUrlInput" type="url" placeholder="https://your-veda-api.example.com" value="${esc(backendUrl())}" autocomplete="url"></div><div class="row mt"><button class="btn blue" data-act="saveBackendUrl">Save connection</button><button class="btn line" data-act="testBackend">Test connection</button></div><p class="note mt-s">Never put an AI API key here. Store secrets only in the backend environment variables. Do not upload real patient records until you have reviewed the host's privacy and security.</p></div>
+  <div class="card mt"><h3>${ic('folder')} Private cloud image storage</h3><p class="sub">Sign in to store original report images and PDFs in a private cloud bucket. Cloud files are tied to your account; this does not automatically sync the rest of your profile or timeline.</p><div class="field mt-s"><label for="supabaseUrlInput">Supabase project URL</label><input id="supabaseUrlInput" type="url" placeholder="https://your-project.supabase.co" value="${esc(cloudUrl())}"></div><div class="field"><label for="supabaseAnonInput">Supabase anon / publishable key</label><input id="supabaseAnonInput" type="password" autocomplete="off" placeholder="Public anon/publishable key" value="${esc(cloudAnon())}"></div><div class="row mt"><button class="btn blue" data-act="saveCloudConfig">Save cloud settings</button></div><div class="divider mt"></div><div class="field mt"><label for="cloudEmailInput">Email</label><input id="cloudEmailInput" type="email" autocomplete="email" placeholder="you@example.com" value="${esc(ls('veda_cloud_email')||'')}"></div><div class="field"><label for="cloudPasswordInput">Password</label><input id="cloudPasswordInput" type="password" autocomplete="current-password" placeholder="At least 8 characters"></div><div class="row wrap"><button class="btn blue" data-act="cloudSignUp">Create account</button><button class="btn line" data-act="cloudSignIn">Sign in</button><button class="btn ghost" data-act="cloudSignOut">Sign out</button></div><p class="note mt-s">${esc(ls('veda_cloud_email')?'Signed-in account: '+ls('veda_cloud_email'):'Not signed in. Create an account or sign in to store images.')}</p><div class="row mt wrap"><button class="btn ghost" data-act="refreshCloudFiles">Refresh cloud files</button></div><div id="cloudFilesList" class="list mt-s"></div><p class="note mt-s">Setup: create a private Storage bucket named <b>veda-medical-records</b> in Supabase, then add SUPABASE_URL, SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY to your backend host. Never put the service-role key here or in GitHub.</p></div>
+  <div class="card mt"><h3>${ic('users')} Sharing permissions</h3><p class="sub">Family: ${S.family.length?S.family.map(f=>`${esc(f.name)} (${FAM_CATS.filter(c=>f.access[c[0]]).map(c=>c[1].toLowerCase()).join(', ')||'nothing'})`).join('; '):'nobody has access.'} Doctor briefs are shared only when you press Copy, Download or Share, and only with the sections you tick.</p><div class="row mt"><button class="btn sm ghost" data-act="nav" data-v="family">Manage family access</button></div></div>
+  <div class="card mt"><h3>${ic('download')} Your data</h3><div class="row wrap"><button class="btn ghost" data-act="exportData">${ic('download')} Export my health data</button><button class="btn danger" data-act="deleteAll">${ic('trash')} Delete all my data</button></div><p class="note mt-s">Individual documents can be deleted from Health records.</p></div>
+  <div class="card mt"><h3>${ic('clock')} Consent history</h3>${S.consentLog.slice(-8).reverse().map(l=>`<p class="note">${new Date(l.t).toLocaleString()} — ${esc(l.m)}</p>`).join('')||'<p class="note">No changes yet.</p>'}</div>`}
+
+/* ============ sheets & flows ============ */
+function openMore(){sheet('More',`<div class="list">${[['cabinet','pill','Medicine cabinet'],['records','folder','Health records'],['trends','trend','Compare & trends'],['family','users','Family coordination'],['emergency','alert','Emergency health card'],['profile','user','My profile'],['privacy','shield','Privacy & security']].map(x=>`<button class="item" data-act="nav" data-v="${x[0]}"><span class="ico">${ic(x[1])}</span><div class="txt"><b>${x[2]}</b></div>${ic('chev')}</button>`).join('')}</div>
+  <div class="row mt wrap"><button class="btn sm line" data-act="theme">Toggle light / dark</button></div>`)}
+function openOnboarding(){if($('#sheet').hidden===false&&$('#obName'))return;
+  sheet('Welcome to Veda',`<p class="serif" style="font-size:20px;color:var(--navy)">Your health journey, understood.</p><p class="sub mt-s">Veda keeps your reports, medicines, appointments and symptoms in one place, explains them in plain language, and helps you prepare for doctor visits. It doesn't diagnose or replace a clinician.</p>
+  <div class="field mt"><label for="obName">What should we call you?</label><input id="obName" placeholder="Your first name" autocomplete="given-name"></div>
+  <label class="row" style="font-weight:500;color:var(--ink)"><input type="checkbox" id="obConsent" checked style="width:20px;min-height:20px"> I agree that Veda may use Claude to read documents and answer questions about my own records.</label>
+  <div class="stack mt"><button class="btn blue" data-act="onboard" data-demo="0">Start with my own records</button><button class="btn line" data-act="onboard" data-demo="1">Explore with demo data</button></div>
+  <p class="note mt">Your data is saved privately${sync==='synced'?' to your account':' on this device'}. You can export or delete it at any time.</p>`);
+  $('#sheetCard header button').classList.add('hide')}
+function startUpload(kind,cam){
+  const can=S.consents.ai;
+  sheet(kind==='prescription'?'Add a prescription':'Scan or upload a report',`<div class="stack">
+   <div class="field"><label for="upType">Document type</label><select id="upType">${[['lab','Lab / blood report'],['prescription','Prescription'],['discharge','Discharge summary'],['other','Other document']].map(o=>`<option value="${o[0]}" ${o[0]===kind?'selected':''}>${o[1]}</option>`).join('')}</select></div>
+   ${can?`<div class="dropzone"><p><b>Photo or screenshot of the document</b></p><p class="note">Images and PDFs are supported via browser OCR (up to 8 PDF pages). Make sure the text is sharp and all values are visible.</p><input id="upFile" type="file" accept="image/*,.pdf,application/pdf" ${cam?'capture="environment"':''} class="mt-s"></div>`:`<div class="alert">${ic('alert')}<div><b>Image reading isn't available</b><span>${!S.consents.ai?'AI processing is switched off in Privacy.':'Browser OCR is available for images; connect a backend in Privacy for AI extraction. You can also paste text or enter values manually.'}</span></div></div>`}
+   <div class="field"><label for="upText">${can?'Or paste the report text':'Paste the report text'}</label><textarea id="upText" rows="5" placeholder="Paste text copied from a lab portal or PDF"></textarea></div>
+   <div id="upStatus"></div>
+   <div class="row wrap"><button class="btn blue" id="upGo" data-act="runExtract" ${S.consents.ai?'':'disabled'}>${ic('scan')} Scan with Veda</button><button class="btn line" data-act="manualDoc">Enter manually</button></div></div>`)}
+const EXTRACT_PROMPT=`You are extracting structured data from a healthcare document (image and/or text). Report ONLY what is actually visible or written. Never invent values, dates or names. Do not diagnose or interpret.
+Return ONLY JSON of this shape:
+{"legible":boolean,"kind":"lab"|"prescription"|"discharge"|"other","title":string,"date":"YYYY-MM-DD"|null,"lab":string|null,"doctor":string|null,
+"params":[{"name":string,"value":number|null,"text":string|null,"unit":string|null,"refLow":number|null,"refHigh":number|null}],
+"medicines":[{"name":string,"ingredient":string|null,"strength":string|null,"frequency":string|null,"duration":string|null}],
+"summary":"2-3 plain-language sentences describing what the document contains, without diagnosis"}
+For lab reports put every measured test in params (numeric results in value; non-numeric in text). refLow/refHigh come from the printed reference range (use null if one side is open). For prescriptions fill medicines. If the document is unreadable, set legible=false and return empty arrays. Title example: "Blood Report".`;
+let pending=null;
+async function loadScriptOnce(src, test){if(test&&test())return;await new Promise((resolve,reject)=>{const old=[...document.scripts].find(x=>x.src===src);if(old){old.addEventListener('load',resolve,{once:true});if(test&&test())resolve();return}const el=document.createElement('script');el.src=src;el.onload=resolve;el.onerror=()=>reject(new Error('Could not load the OCR library. Check your internet connection and try again.'));document.head.appendChild(el)})}
+async function browserOCR(file){
+  if(file.type==='application/pdf'){
+    await loadScriptOnce('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',()=>!!window.pdfjsLib);
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const bytes=await file.arrayBuffer(),pdf=await pdfjsLib.getDocument({data:bytes}).promise;let all='';
+    for(let n=1;n<=Math.min(pdf.numPages,8);n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:1.6}),canvas=document.createElement('canvas');canvas.width=vp.width;canvas.height=vp.height;await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;all+='\n'+(await ocrCanvas(canvas))+ '\n'}return all.trim();
+  }
+  return ocrCanvas(file);
+}
+async function ocrCanvas(source){await loadScriptOnce('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js',()=>!!window.Tesseract);const r=await Tesseract.recognize(source,'eng');return (r.data&&r.data.text||'').trim()}
+function localExtract(text,type){
+  const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);const params=[];
+  for(const line of lines){const m=line.match(/^(.{2,55}?)\s{1,}|^(.{2,55}?)\s*[:\-]\s*/);const nums=[...line.matchAll(/[-+]?\d+(?:\.\d+)?/g)].map(x=>Number(x[0]));if(nums.length&&/(?:g\/dl|mg\/dl|mmol|ng\/ml|iu\/l|miu|%|µ|ml|cells|platelet|hemoglobin|haemoglobin|glucose|cholesterol|vitamin|creatinine|tsh|wbc|rbc|hba1c|ldl|hdl|triglyceride)/i.test(line)){const name=(m&&(m[1]||m[2])||line.split(/\s{2,}/)[0]).replace(/[:\-]+$/,'').trim();const unit=(line.match(/(?:g\/dL|mg\/dL|mmol\/L|ng\/mL|IU\/L|mIU\/L|%|µIU\/mL|cells\/[^\s]+)/i)||[])[0]||'';params.push({name,value:nums[0],text:'',unit,refLow:null,refHigh:null})}}
+  const title=type==='prescription'?'Prescription':type==='discharge'?'Discharge summary':type==='lab'?'Medical report':'Medical document';
+  const meds=[];if(type==='prescription'){for(const l of lines){if(/\b\d+\s?(?:mg|mcg|g|ml|iu)\b/i.test(l)&&l.length<120)meds.push({name:l.replace(/\s{2,}/g,' ').slice(0,90),ingredient:'',strength:'',frequency:'',duration:''})}}
+  const dateMatch=text.match(/\b(\d{4}-\d{2}-\d{2})\b/);return {legible:!!text.trim(),kind:type,title,date:dateMatch?dateMatch[1]:null,lab:'',doctor:'',params,medicines:meds,summary:`Text was extracted from the document${params.length?` and ${params.length} possible test value(s) were detected`:''}. Please verify every field against the original document. This is basic OCR-assisted extraction, not an AI medical interpretation.`};
+}
+async function runExtract(){
+  const type=val('upType'),text=val('upText'),f=$('#upFile')&&$('#upFile').files[0];
+  if(!f&&!text){toast('Add a photo/PDF or paste some text first');return}
+  if(!S.consents.ai){toast('Enable document processing in Privacy first');return}
+  const st=$('#upStatus'),go_=$('#upGo');go_.disabled=true;
+  st.innerHTML=`<div class="steps"><div class="step"><span class="tick">…</span><span>Reading the document with browser OCR</span></div><div class="step wait"><span class="tick"></span><span>Extracting fields</span></div></div>`;
+  try{
+    let extractedText=text||'',fileName=f?f.name:null;
+    if(f){const ocr=await browserOCR(f);extractedText=[extractedText,ocr].filter(Boolean).join('\n\n')}
+    if(!extractedText.trim())throw new Error('No readable text was found. Try a clearer scan or paste the report text.');
+    let r;
+    if(backendUrl()){
+      const response=await fetch(backendUrl()+'/api/extract',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:extractedText.slice(0,50000),kind:type})});
+      if(!response.ok)throw new Error((await response.json().catch(()=>({}))).detail||`Backend request failed (${response.status}). Check the backend URL and server logs.`);r=await response.json();
+    }else if(SAMPLE){const opts={modelTier:'default'};if(f&&f.type.startsWith('image/'))opts.images=[await prepImage(f)];r=await SAMPLE.json(`${EXTRACT_PROMPT}\nThe user says this is a: ${type}.\nDocument text:\n${extractedText.slice(0,50000)}`,opts)}
+    else r=localExtract(extractedText,type);
+    if(r.legible===false||(!(r.params||[]).length&&!(r.medicines||[]).length&&!r.summary)){st.innerHTML=`<div class="alert">${ic('alert')}<div><b>I couldn't extract fields confidently</b><span>Review the OCR text, try a clearer photo, or enter values manually.</span></div></div>`;go_.disabled=false;return}
+    pending={id:uid(),kind:['lab','prescription','discharge','other'].includes(r.kind)?r.kind:type,title:r.title||'Medical document',date:/^\d{4}-\d{2}-\d{2}$/.test(r.date||'')?r.date:today(),dateGuess:!/\d{4}-\d{2}-\d{2}/.test(r.date||''),lab:r.lab||'',doctor:r.doctor||'',params:(r.params||[]).map(p=>({name:String(p.name||''),value:num(p.value),text:p.text||'',unit:p.unit||'',refLow:num(p.refLow),refHigh:num(p.refHigh)})).filter(p=>p.name),medicines:(r.medicines||[]).filter(m=>m&&m.name),summary:r.summary||'',source:f?'upload':'text',fileName,ocrText:extractedText,file:f||null};
+    reviewDoc();
+  }catch(e){st.innerHTML=`<div class="alert red">${ic('alert')}<div><b>Couldn't process this document</b><span>${esc(e.message||'Try again, or enter values manually.')}</span></div></div>`;go_.disabled=false}
+}
+function manualDoc(){pending={id:uid(),kind:val('upType')||'lab',title:'',date:today(),lab:'',doctor:'',params:[],medicines:[],summary:'',source:'manual'};if(pending.kind==='lab')pending.params=[{name:'',value:null,text:'',unit:'',refLow:null,refHigh:null}];reviewDoc()}
+function reviewDoc(){const d=pending;
+  sheet('Review before saving',`<p class="sub">Check the values against your document. Anything wrong? Fix it here — your records are only as accurate as what's saved.</p>
+  ${d.dateGuess?`<div class="alert mt-s">${ic('alert')}<div><b>No date found</b><span>I've used today's date. Please set the report date.</span></div></div>`:''}
+  <div class="two-col mt"><div class="field"><label for="rv_title">Title</label><input id="rv_title" value="${esc(d.title)}" placeholder="e.g. Blood Report"></div><div class="field"><label for="rv_date">Report date</label><input id="rv_date" type="date" value="${esc(d.date)}"></div></div>
+  <div class="two-col"><div class="field"><label for="rv_kind">Type</label><select id="rv_kind">${[['lab','Lab report'],['prescription','Prescription'],['discharge','Discharge summary'],['other','Other']].map(o=>`<option value="${o[0]}" ${o[0]===d.kind?'selected':''}>${o[1]}</option>`).join('')}</select></div><div class="field"><label for="rv_doc">Doctor / lab</label><input id="rv_doc" value="${esc(d.doctor||d.lab)}"></div></div>
+  <h4 style="margin:8px 0">Values</h4><div class="tbl-wrap"><table><thead><tr><th>Name</th><th>Value</th><th>Unit</th><th>Ref low</th><th>Ref high</th><th></th></tr></thead><tbody id="rvRows">${d.params.map((p,i)=>rvRow(p,i)).join('')}</tbody></table></div>
+  <button class="btn sm ghost mt-s" data-act="rvAdd">${ic('plus')} Add value</button>
+  ${d.medicines.length?`<h4 style="margin:14px 0 6px">Medicines found</h4>${d.medicines.map((m,i)=>`<label class="row" style="font-weight:500;color:var(--ink);margin-bottom:6px"><input type="checkbox" class="rvMed" data-i="${i}" checked style="width:20px;min-height:20px"> ${esc(m.name)} ${esc(m.strength||'')} <span class="note">${esc([m.ingredient,m.frequency,m.duration].filter(Boolean).join(' · '))}</span></label>`).join('')}<p class="note">Ticked medicines are added to your Medicine Cabinet as active. Check dosage with your prescription.</p>`:''}
+  <div class="field mt"><label for="rv_sum">Summary</label><textarea id="rv_sum" rows="3">${esc(d.summary)}</textarea></div>
+  <div class="row mt wrap"><button class="btn blue" data-act="saveDoc">Save to my records</button><button class="btn line" data-act="closeSheet">Cancel</button></div>`,true)}
+const rvRow=(p,i)=>`<tr data-i="${i}"><td><input class="rn" value="${esc(p.name)}" aria-label="Name"></td><td><input class="rv" value="${p.value??''}" inputmode="decimal" style="min-width:70px" aria-label="Value"></td><td><input class="ru" value="${esc(p.unit)}" style="min-width:70px" aria-label="Unit"></td><td><input class="rl" value="${p.refLow??''}" inputmode="decimal" style="min-width:60px" aria-label="Reference low"></td><td><input class="rh" value="${p.refHigh??''}" inputmode="decimal" style="min-width:60px" aria-label="Reference high"></td><td><button class="iconbtn" data-act="rvDel" aria-label="Remove row">${ic('x')}</button></td></tr>`;
+function readRows(){return $$('#rvRows tr').map(tr=>({name:$('.rn',tr).value.trim(),value:num($('.rv',tr).value),text:'',unit:$('.ru',tr).value.trim(),refLow:num($('.rl',tr).value),refHigh:num($('.rh',tr).value)})).filter(p=>p.name)}
+async function saveDoc(){
+  const d=pending;d.title=val('rv_title')||'Medical document';d.date=val('rv_date')||today();d.kind=val('rv_kind');
+  const dl=val('rv_doc');d.doctor=d.kind==='lab'?'':dl;d.lab=d.kind==='lab'?dl:'';d.params=readRows();d.summary=val('rv_sum');d.addedAt=Date.now();
+  const medsChosen=$$('.rvMed').filter(c=>c.checked).map(c=>d.medicines[+c.dataset.i]);
+  if(d.file){
+    if(!backendUrl()||!cloudUrl()||!cloudAnon()) {toast('To store the original image, configure the backend and cloud storage in Privacy & security first.');return}
+    try{toast('Uploading original document securely…');const cloud=await uploadCloudDocument(d.file,d);d.cloudPath=cloud.path;d.cloudName=cloud.name;d.cloudSize=cloud.size}
+    catch(e){toast('Image was not uploaded: '+e.message);return}
+  }
+  const beforeConf=new Set(conflicts().map(c=>c.id));
+  S.docs.push(d);
+  medsChosen.forEach(m=>S.medicines.push({id:uid(),name:m.name,ingredient:m.ingredient||'',strength:m.strength||'',dosage:'',frequency:m.frequency||'',perDay:perDay(m.frequency),start:d.date,end:'',doctor:d.doctor,status:'active',notes:'Added from '+d.title,fromDoc:d.id,source:'prescription'}));
+  const ch=d.params.some(p=>p.value!=null)?changesFor(d):[];const changed=ch.filter(c=>c.dir==='up'||c.dir==='down');const newConf=conflicts().filter(c=>!beforeConf.has(c.id));
+  save();pending=null;
+  sheet('Added to your health record',`<div class="steps">
+   ${[['Scanned and organized',`${d.params.length} value${d.params.length===1?'':'s'}${d.medicines.length?` and ${d.medicines.length} medicine${d.medicines.length===1?'':'s'}`:''} captured.`],['Stored in Health Records',`${esc(d.title)} · ${fmt(d.date)}`],['Added to your Health Journey','A new event now appears on your timeline.'],['Compared with previous report',ch.length?(ch.some(c=>c.dir!=='new')?`${changed.length} value${changed.length===1?'':'s'} changed compared with your previous report.`:'First report with these values — nothing to compare yet.'):'No measurable values to compare.'],['Health Memory updated','You can now ask Veda about this document.'],['Medicine and allergy check',newConf.length?`${newConf.length} possible conflict${newConf.length>1?'s':''} flagged for you to review.`:'No new possible conflicts found.']].map(s=>`<div class="step"><span class="tick">${ic('check')}</span><div><b>${s[0]}</b><div class="note">${esc(s[1])}</div></div></div>`).join('')}</div>
+   ${changed.length?`<div class="card flat mt"><b>What changed</b><ul style="margin:6px 0 0;padding-left:18px">${changed.slice(0,5).map(c=>`<li>${esc(changeLine(c))}</li>`).join('')}</ul><p class="note mt-s">You may want to discuss these with your healthcare professional.</p></div>`:''}
+   <div class="row mt wrap"><button class="btn blue" data-act="openDoc" data-id="${d.id}">View document</button><button class="btn ghost" data-act="askQ" data-q="What changed in my latest report?">Ask Veda</button>${newConf.length?`<button class="btn danger" data-act="nav" data-v="cabinet">Review conflicts</button>`:''}</div>`);render()}
+function perDay(f){const t=String(f||'').toLowerCase();if(/once|daily|od|1x|every day|at night/.test(t)&&!/twice|three|four/.test(t))return 1;if(/twice|bd|bid|2x|two/.test(t))return 2;if(/three|tid|tds|3x/.test(t))return 3;if(/four|qid|4x/.test(t))return 4;return 0}
+
+/* medicine scanner */
+function scanMed(){
+  const can=aiOn()&&IMGOK;
+  sheet('Medicine scanner',`<p class="sub">Photograph the strip, box or label so the name is clearly visible. If Veda isn't confident, it won't guess.</p>
+  ${can?`<div class="dropzone mt"><input id="mdFile" type="file" accept="image/*" capture="environment"></div>`:`<div class="alert mt">${ic('alert')}<div><b>Photo scanning isn't available</b><span>${!SAMPLE?'AI is not available in this view.':!S.consents.ai?'AI is switched off in Privacy.':'This viewer cannot send images.'} You can type the name from the packaging instead.</span></div></div>`}
+  <div class="field mt"><label for="mdName">${can?'Or type the name on the packaging':'Name on the packaging'}</label><input id="mdName" placeholder="e.g. Paracetamol 500 mg"></div>
+  <div id="mdOut"></div><div class="row wrap"><button class="btn teal" id="mdGo" data-act="runMed" ${aiOn()?'':'disabled'}>${ic('scan')} Identify</button><button class="btn line" data-act="medForm">Add manually instead</button></div>`)}
+let scanned=null;
+async function runMed(){
+  const f=$('#mdFile')&&$('#mdFile').files[0],name=val('mdName');if(!f&&!name){toast('Add a photo or type a name');return}
+  const out=$('#mdOut'),btn=$('#mdGo');btn.disabled=true;out.innerHTML=`<p class="note"><span class="dots"><span></span><span></span><span></span></span> Looking closely…</p>`;
+  try{
+    const opts={modelTier:'default'};if(f)opts.images=[await prepImage(f)];
+    const r=await SAMPLE.json(`You identify medicines from packaging photos or a typed name. Be conservative: NEVER guess. Only use text actually printed/typed. If the name or active ingredient is not clearly readable or you are not sure, set identified=false and confidence="low".
+Return ONLY JSON: {"identified":boolean,"confidence":"high"|"medium"|"low","name":string|null,"ingredient":string|null,"strength":string|null,"manufacturer":string|null,"purpose":string|null,"info":string|null,"warnings":[string]}
+purpose: general, commonly-known use in one short phrase. info: one or two sentences of basic information. warnings: only well-established general warnings (e.g. dose limits, common cautions); leave empty if unsure. Never advise starting, stopping or changing a medicine.${name?`\nTyped name: ${name}`:''}`,opts);
+    btn.disabled=false;
+    if(!r.identified||r.confidence==='low'||!r.name){scanned=null;out.innerHTML=`<div class="alert">${ic('alert')}<div><b>Not identified</b><span>I couldn't confidently identify this medicine. Please verify the name on the packaging or with a pharmacist.</span></div></div>`;return}
+    scanned=r;
+    out.innerHTML=`<div class="card flat mt"><div class="row sp"><b style="font-size:18px">Medicine identified: ${esc(r.name)}${r.strength&&!r.name.includes(r.strength)?' '+esc(r.strength):''}</b><span class="chip ${r.confidence==='high'?'teal':'amber'}">${r.confidence} confidence</span></div>
+     <table style="margin-top:6px"><tbody>${[['Active ingredient',r.ingredient],['Strength',r.strength],['Manufacturer',r.manufacturer],['Common purpose',r.purpose]].filter(x=>x[1]).map(x=>`<tr><td class="note">${x[0]}</td><td>${esc(x[1])}</td></tr>`).join('')}</tbody></table>
+     ${r.info?`<p class="mt-s">${esc(r.info)}</p>`:''}${(r.warnings||[]).length?`<ul style="margin:8px 0 0;padding-left:18px">${r.warnings.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>`:''}
+     ${r.confidence!=='high'?`<p class="note mt-s">I'm not fully sure. Please double-check the name on the packaging or with a pharmacist.</p>`:''}
+     <p class="note mt-s">Don't start, stop or change any medicine without advice from your doctor or pharmacist.</p>
+     <div class="row mt"><button class="btn blue" data-act="addScanned">Add to medicine cabinet</button></div></div>`;
+  }catch(e){btn.disabled=false;out.innerHTML=`<div class="alert red">${ic('alert')}<div><b>Couldn't scan</b><span>${esc(aiErr(e))}</span></div></div>`}
+}
+function medForm(id,pre){const m=S.medicines.find(x=>x.id===id)||pre||{};
+  sheet(id?'Edit medicine':'Add medicine',`<div class="field"><label for="m_name">Medicine name</label><input id="m_name" value="${esc(m.name||'')}"></div>
+  <div class="two-col"><div class="field"><label for="m_ing">Active ingredient / salt</label><input id="m_ing" value="${esc(m.ingredient||'')}"></div><div class="field"><label for="m_str">Strength</label><input id="m_str" value="${esc(m.strength||'')}" placeholder="e.g. 500 mg"></div></div>
+  <div class="two-col"><div class="field"><label for="m_dos">Dosage (as prescribed)</label><input id="m_dos" value="${esc(m.dosage||'')}" placeholder="e.g. 1 tablet"></div><div class="field"><label for="m_freq">Frequency</label><select id="m_freq">${['Once daily','Twice daily','Three times daily','Four times daily','Weekly','As needed','Other'].map(o=>`<option ${m.frequency===o?'selected':''}>${o}</option>`).join('')}</select></div></div>
+  <div class="two-col"><div class="field"><label for="m_start">Start date</label><input id="m_start" type="date" value="${esc(m.start||today())}"></div><div class="field"><label for="m_end">End date (if any)</label><input id="m_end" type="date" value="${esc(m.end||'')}"></div></div>
+  <div class="two-col"><div class="field"><label for="m_doc">Prescribing doctor</label><input id="m_doc" value="${esc(m.doctor||'')}"></div><div class="field"><label for="m_stat">Status</label><select id="m_stat"><option value="active" ${m.status!=='completed'?'selected':''}>Active</option><option value="completed" ${m.status==='completed'?'selected':''}>Completed</option></select></div></div>
+  <div class="field"><label for="m_notes">Notes</label><textarea id="m_notes" rows="2">${esc(m.notes||'')}</textarea></div>
+  <div class="row wrap"><button class="btn blue" data-act="saveMed" data-id="${id||''}">Save</button>${id?`<button class="btn danger" data-act="delMed" data-id="${id}">Delete</button>`:''}</div>`)}
+function apptForm(id){const a=S.appointments.find(x=>x.id===id)||{};
+  sheet(id?'Edit appointment':'Add appointment',`<div class="two-col"><div class="field"><label for="a_doc">Doctor</label><input id="a_doc" value="${esc(a.doctor||'')}" list="drList"><datalist id="drList">${S.profile.doctors.map(d=>`<option value="${esc(d.name)}">`).join('')}</datalist></div><div class="field"><label for="a_spec">Specialty</label><input id="a_spec" value="${esc(a.specialty||'')}"></div></div>
+  <div class="two-col"><div class="field"><label for="a_date">Date</label><input id="a_date" type="date" value="${esc(a.date||addDays(7))}"></div><div class="field"><label for="a_time">Time</label><input id="a_time" type="time" value="${esc(a.time||'')}"></div></div>
+  <div class="field"><label for="a_loc">Location</label><input id="a_loc" value="${esc(a.location||'')}"></div><div class="field"><label for="a_purp">Purpose</label><input id="a_purp" value="${esc(a.purpose||'')}"></div><div class="field"><label for="a_notes">Notes</label><textarea id="a_notes" rows="3">${esc(a.notes||'')}</textarea></div>
+  <div class="row wrap"><button class="btn blue" data-act="saveAppt" data-id="${id||''}">Save</button>${id?`<button class="btn danger" data-act="delAppt" data-id="${id}">Delete</button>`:''}</div>`)}
+function symForm(){sheet('Log a symptom',`<div class="field"><label for="s_name">What are you experiencing?</label><input id="s_name" placeholder="e.g. Headache" list="symList"><datalist id="symList">${[...new Set(S.symptoms.map(s=>s.name))].map(n=>`<option value="${esc(n)}">`).join('')}</datalist></div>
+  <div class="two-col"><div class="field"><label for="s_sev">Severity</label><select id="s_sev"><option>Mild</option><option>Moderate</option><option>Severe</option></select></div><div class="field"><label for="s_date">Date</label><input id="s_date" type="date" value="${today()}"></div></div>
+  <div class="field"><label for="s_note">Note (optional)</label><textarea id="s_note" rows="2"></textarea></div>
+  <p class="note">If symptoms are severe or sudden, contact a doctor or emergency services right away.</p><div class="row mt"><button class="btn blue" data-act="saveSym">Save symptom</button></div>`)}
+function evtForm(){sheet('Add a health event',`<div class="field"><label for="e_title">What happened?</label><input id="e_title" placeholder="e.g. Vaccination, dental visit, health check"></div><div class="two-col"><div class="field"><label for="e_type">Type</label><select id="e_type"><option value="visit">Doctor visit</option><option value="note">Other event</option><option value="prescription">Prescription</option></select></div><div class="field"><label for="e_date">Date</label><input id="e_date" type="date" value="${today()}"></div></div><div class="field"><label for="e_det">Details</label><textarea id="e_det" rows="2"></textarea></div><button class="btn blue" data-act="saveEvt">Save event</button>`)}
+function famForm(id){const f=S.family.find(x=>x.id===id)||{access:{}};
+  if(!S.consents.family){toast('Family sharing is switched off in Privacy');return}
+  sheet(id?'Edit family member':'Add family member',`<div class="two-col"><div class="field"><label for="f_name">Name</label><input id="f_name" value="${esc(f.name||'')}"></div><div class="field"><label for="f_rel">Relationship</label><input id="f_rel" value="${esc(f.relation||'')}" placeholder="e.g. Mom"></div></div><div class="field"><label for="f_ph">Phone (optional)</label><input id="f_ph" value="${esc(f.phone||'')}" inputmode="tel"></div>
+  <h4 style="margin:6px 0">What can they see?</h4>${FAM_CATS.map(c=>`<label class="row" style="font-weight:500;color:var(--ink);margin-bottom:8px"><input type="checkbox" class="fcat" data-k="${c[0]}" ${f.access[c[0]]?'checked':''} style="width:20px;min-height:20px"> ${c[1]}</label>`).join('')}
+  <label class="row mt" style="font-weight:500;color:var(--ink)"><input type="checkbox" id="f_cons" ${id?'checked':''} style="width:20px;min-height:20px"> This person has agreed to be added as a trusted contact.</label>
+  <div class="row mt wrap"><button class="btn blue" data-act="saveFam" data-id="${id||''}">Save</button>${id?`<button class="btn danger" data-act="delFam" data-id="${id}">Remove</button>`:''}</div>`)}
+
+/* ============ event delegation ============ */
+const A={
+ nav(el){closeSheet();go(el.dataset.v)}, back(){back()}, closeSheet(){if(S.onboarded)closeSheet()}, openMore(){openMore()}, openSOS(){openSOS()},
+ theme(){const r=document.documentElement;const dark=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0A1625';r.dataset.theme=dark?'light':'dark'},
+ onboard(el){const n=val('obName');S.profile.name=n||'Friend';S.onboarded=true;S.consents.ai=$('#obConsent').checked;S.consentLog.push({t:Date.now(),m:`AI processing ${S.consents.ai?'allowed':'not allowed'} at setup`});
+   if(el.dataset.demo==='1')loadDemo();save();closeSheet();$('#sheetCard header button').classList.remove('hide');render()},
+ jfilter(el){go('journey',{f:el.dataset.f},false)},
+ openEvent(el){const e=timeline().find(x=>x.id===el.dataset.id);if(!e)return;const r=e.ref;
+   const btn=r.k==='doc'?`<button class="btn blue" data-act="openDoc" data-id="${r.id}">Open document</button>`:r.k==='med'?`<button class="btn blue" data-act="nav" data-v="cabinet">Medicine cabinet</button>`:r.k==='appt'?`<button class="btn blue" data-act="openBrief" data-id="${r.id}">Doctor Brief</button>`:r.k==='sym'?`<button class="btn ghost" data-act="askQ" data-q="Show my ${esc(e.title.replace('Symptom: ',''))} history">Ask Veda about this</button>`:'';
+   const rel=r.k==='doc'?(()=>{const d=S.docs.find(x=>x.id===r.id);return d&&d.params&&d.params.length?`<p class="mt-s">${d.params.filter(p=>p.value!=null).length} values recorded.</p>`:''})():'';
+   sheet(e.title,`<div class="row wrap"><span class="chip">${fmt(e.date)}</span><span class="chip plain">${esc(e.type)}</span>${e.upcoming?'<span class="chip teal">Upcoming</span>':''}</div><p class="mt-s">${esc(e.detail)}</p>${rel}<div class="row mt wrap">${btn}${r.k==='evt'?`<button class="btn danger" data-act="delEvt" data-id="${r.id}">Delete</button>`:''}</div>`)},
+ startUpload(el){startUpload(el.dataset.kind,el.dataset.cam)}, runExtract, manualDoc, rvAdd(){const tb=$('#rvRows');tb.insertAdjacentHTML('beforeend',rvRow({name:'',value:null,unit:'',refLow:null,refHigh:null},tb.children.length))}, rvDel(el){el.closest('tr').remove()}, saveDoc,
+ openDoc(el){closeSheet();go('doc',el.dataset.id)},
+ delDoc(el){if(!confirm('Delete this document and its stored values? This can\'t be undone.'))return;const id=el.dataset.id;S.docs=S.docs.filter(d=>d.id!==id);S.medicines.forEach(m=>{if(m.fromDoc===id)m.fromDoc=null});save();toast('Document deleted');back()},
+ addDocMed(el){const d=S.docs.find(x=>x.id===el.dataset.id),m=d.medicines[+el.dataset.i];medForm(null,{name:m.name,ingredient:m.ingredient,strength:m.strength,frequency:m.frequency,doctor:d.doctor,start:d.date,status:'active',notes:'From '+d.title,fromDoc:d.id})},
+ scanMed, runMed, addScanned(){const r=scanned;if(!r)return;medForm(null,{name:r.name,ingredient:r.ingredient,strength:r.strength,notes:r.manufacturer?'Manufacturer: '+r.manufacturer:'',status:'active'})},
+ medForm(el){medForm(el&&el.dataset&&el.dataset.id)},
+ saveMed(el){const id=el.dataset.id;const n=val('m_name');if(!n){toast('Enter a medicine name');return}
+   const base={name:n,ingredient:val('m_ing'),strength:val('m_str'),dosage:val('m_dos'),frequency:val('m_freq'),perDay:perDay(val('m_freq')),start:val('m_start'),end:val('m_end'),doctor:val('m_doc'),status:val('m_stat'),notes:val('m_notes')};
+   const ex=S.medicines.find(x=>x.id===id);if(ex)Object.assign(ex,base);else S.medicines.push(Object.assign({id:uid(),source:'manual'},base,scanned&&scanned.name===n?{source:'scan'}:{}));
+   save();closeSheet();render();const c=conflicts().filter(c=>c.medIds.some(i=>!ex||i===(ex&&ex.id)||true));if(c.length)toast('Possible conflict flagged — please review');else toast('Medicine saved')},
+ delMed(el){if(!confirm('Delete this medicine?'))return;S.medicines=S.medicines.filter(m=>m.id!==el.dataset.id);save();closeSheet();render()},
+ completeMed(el){const m=S.medicines.find(x=>x.id===el.dataset.id);m.status='completed';if(!m.end)m.end=today();save();render()},
+ dose(el){const t=today();S.doses[t]=S.doses[t]||{};const i=+el.dataset.i,cur=S.doses[t][el.dataset.id]||0;S.doses[t][el.dataset.id]=cur===i+1?i:i+1;save();render()},
+ addAllergy(){const n=val('alName');if(!n)return;S.allergies.push({id:uid(),name:n,reaction:val('alReact')});save();render()},
+ delAllergy(el){S.allergies=S.allergies.filter(a=>a.id!==el.dataset.id);save();render()},
+ dismissConflict(el){S.dismissed[el.dataset.id]=true;save();render()},
+ apptForm(el){apptForm(el&&el.dataset&&el.dataset.id)},
+ saveAppt(el){const d=val('a_doc'),dt=val('a_date');if(!d||!dt){toast('Doctor and date are required');return}
+   const base={doctor:d,specialty:val('a_spec'),date:dt,time:val('a_time'),location:val('a_loc'),purpose:val('a_purp'),notes:val('a_notes')};const ex=S.appointments.find(x=>x.id===el.dataset.id);
+   if(ex)Object.assign(ex,base);else S.appointments.push(Object.assign({id:uid()},base));save();closeSheet();render();toast('Appointment saved')},
+ delAppt(el){if(!confirm('Delete this appointment?'))return;S.appointments=S.appointments.filter(a=>a.id!==el.dataset.id);delete S.briefs[el.dataset.id];save();closeSheet();render()},
+ prepDoctor(){const a=nextAppt();if(a)go('brief',a.id);else{toast('Add an appointment first');apptForm()}},
+ openBrief(el){closeSheet();go('brief',el.dataset.id)},
+ saveBrief(el){collectBrief(el.dataset.id);save();toast('Brief saved')},
+ regenBrief(el){if(!confirm('Replace your edits with a fresh brief built from your records?'))return;const a=S.appointments.find(x=>x.id===el.dataset.id);S.briefs[a.id].sections=buildBrief(a);save();render()},
+ async suggestQ(el){const c=collectBrief(el.dataset.id);if(!c)return;el.disabled=true;toast('Thinking of questions…');
+   try{const r=await SAMPLE.json(`Based ONLY on this person's records and brief, suggest 3 short, neutral questions they could ask their doctor at the appointment. Never diagnose or recommend medicines. Return ONLY JSON: {"questions":[string]}\nRECORDS: ${JSON.stringify(recordsContext())}\nBRIEF: ${JSON.stringify(c.b.sections)}`,{modelTier:'quick'});
+     const add=(r.questions||[]).slice(0,3).map(q=>'• '+q).join('\n');c.b.sections.questions=(c.b.sections.questions.trim()==='•'?'':c.b.sections.questions.trim()+'\n')+add;save();render()}catch(e){toast(aiErr(e));el.disabled=false}},
+ shareBrief(el){const c=collectBrief(el.dataset.id);if(!c)return;save();window._bt=briefText(c.a,c.b);const inc=BRIEF_SECTIONS.filter(s=>c.b.include[s[0]]&&c.b.sections[s[0]].trim()).map(s=>s[1]);
+   sheet('Share Doctor Brief',`<p class="sub">This is exactly what will be shared. Sections left out: ${BRIEF_SECTIONS.filter(s=>!inc.includes(s[1])).map(s=>s[1]).join(', ')||'none'}.</p><pre id="btPre" style="white-space:pre-wrap;font-family:var(--sans);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;max-height:44vh;overflow:auto">${esc(window._bt)}</pre><div class="row mt wrap"><button class="btn blue" data-act="copyText" data-t="brief">Copy</button><button class="btn ghost" data-act="dlText" data-t="brief">${ic('download')} Download</button>${navigator.share?`<button class="btn line" data-act="nativeShare" data-t="brief">${ic('share')} Share…</button>`:''}</div>`)},
+ symForm, saveSym(){const n=val('s_name');if(!n){toast('Describe the symptom');return}S.symptoms.push({id:uid(),name:n,severity:val('s_sev'),date:val('s_date')||today(),note:val('s_note')});save();closeSheet();render();toast('Symptom logged')},
+ evtForm, saveEvt(){const t=val('e_title');if(!t)return;S.events.push({id:uid(),type:val('e_type'),title:t,date:val('e_date')||today(),detail:val('e_det')});save();closeSheet();render()},
+ delEvt(el){S.events=S.events.filter(e=>e.id!==el.dataset.id);save();closeSheet();render()},
+ famForm(el){famForm(el&&el.dataset&&el.dataset.id)},
+ saveFam(el){const n=val('f_name');if(!n){toast('Enter a name');return}if(!$('#f_cons').checked){toast('Please confirm this person agreed to be added');return}
+   const access={};$$('.fcat').forEach(c=>access[c.dataset.k]=c.checked);const ex=S.family.find(x=>x.id===el.dataset.id);const base={name:n,relation:val('f_rel'),phone:val('f_ph'),access};
+   if(ex)Object.assign(ex,base);else{S.family.push(Object.assign({id:uid(),consentDate:today()},base));S.consentLog.push({t:Date.now(),m:`Added ${n} as a trusted family member`})}save();closeSheet();render()},
+ delFam(el){const f=S.family.find(x=>x.id===el.dataset.id);if(!confirm('Remove '+f.name+'? They will no longer be included in anything you send.'))return;S.family=S.family.filter(x=>x.id!==f.id);S.consentLog.push({t:Date.now(),m:`Removed ${f.name} from family access`});save();closeSheet();render()},
+ previewFam(el){const f=S.family.find(x=>x.id===el.dataset.id);sheet(`What ${f.name} can see`,`<pre style="white-space:pre-wrap;font-family:var(--sans);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px">${esc(famSummary(f))}</pre><p class="note mt-s">Not shown: ${FAM_CATS.filter(c=>!f.access[c[0]]).map(c=>c[1].toLowerCase()).join(', ')||'nothing hidden'}.</p>`)},
+ shareFam(el){const f=S.family.find(x=>x.id===el.dataset.id);window._ft=famSummary(f);sheet(`Send to ${f.name}`,`<p class="sub">Only the categories you allowed are included.</p><pre style="white-space:pre-wrap;font-family:var(--sans);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;max-height:40vh;overflow:auto">${esc(window._ft)}</pre><div class="row mt wrap"><button class="btn blue" data-act="copyText" data-t="fam">Copy</button>${f.phone?`<a class="btn ghost" href="sms:${esc(f.phone.replace(/[^+\d]/g,''))}?&body=${encodeURIComponent(window._ft)}">Text</a>`:''}${navigator.share?`<button class="btn line" data-act="nativeShare" data-t="fam">Share…</button>`:''}</div>`)},
+ async copyText(el){const t=el.dataset.t==='brief'?window._bt:el.dataset.t==='fam'?window._ft:emergencyText();try{await navigator.clipboard.writeText(t);toast('Copied')}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Copied')}catch(_){toast('Select the text and copy it manually')}ta.remove()}},
+ async nativeShare(el){const t=el.dataset.t==='brief'?window._bt:window._ft;try{await navigator.share({text:t})}catch(e){}},
+ async dlText(el){await saveFile('veda-doctor-brief.txt',window._bt)},
+ saveProfile(){const p=S.profile;p.name=val('pf_name');p.dob=val('pf_dob');p.sex=val('pf_sex');p.blood=val('pf_blood');p.height=val('pf_h');p.weight=val('pf_w');p.conditions=val('pf_cond');p.emergencyNumber=val('pf_en')||'112';save();toast('Profile saved')},
+ addContact(){const n=val('ct_n');if(!n)return;S.profile.contacts.push({id:uid(),name:n,phone:val('ct_p'),relation:val('ct_r')});save();render()}, delContact(el){S.profile.contacts=S.profile.contacts.filter(c=>c.id!==el.dataset.id);save();render()},
+ addDoctor(){const n=val('dr_n');if(!n)return;S.profile.doctors.push({id:uid(),name:n,phone:val('dr_p')});save();render()}, delDoctor(el){S.profile.doctors=S.profile.doctors.filter(c=>c.id!==el.dataset.id);save();render()},
+ goProfile(){closeSheet();go('profile')},
+ saveCloudConfig(){const u=val('supabaseUrlInput').trim().replace(/\/$/,'');const k=val('supabaseAnonInput').trim();if(u&&!/^https:\/\//i.test(u)){toast('Enter a valid Supabase HTTPS URL');return}ls('veda_supabase_url',u||null);ls('veda_supabase_anon',k||null);cloudClient=null;cloudClientKey='';toast('Cloud settings saved');render()},
+ async cloudSignUp(){try{const c=await getCloudClient(),email=val('cloudEmailInput').trim(),password=val('cloudPasswordInput');if(!email||password.length<8){toast('Enter an email and a password with at least 8 characters');return}const {data,error}=await c.auth.signUp({email,password});if(error)throw error;ls('veda_cloud_email',email);if(data.session)toast('Cloud account created and signed in');else toast('Account created. Check your email to confirm, then sign in.');render()}catch(e){toast('Sign-up failed: '+e.message)}},
+ async cloudSignIn(){try{const c=await getCloudClient(),email=val('cloudEmailInput').trim(),password=val('cloudPasswordInput');if(!email||!password){toast('Enter your email and password');return}const {data,error}=await c.auth.signInWithPassword({email,password});if(error)throw error;ls('veda_cloud_email',data.user.email||email);toast('Signed in to VEDA Cloud Storage');render()}catch(e){toast('Sign-in failed: '+e.message)}},
+ async cloudSignOut(){try{const c=await getCloudClient();const {error}=await c.auth.signOut();if(error)throw error;ls('veda_cloud_email',null);toast('Signed out');render()}catch(e){ls('veda_cloud_email',null);toast('Signed out on this device');render()}},
+ async refreshCloudFiles(){const box=$('#cloudFilesList');if(box)box.innerHTML='<p class="note">Loading private cloud files…</p>';try{if(!backendUrl())throw new Error('Save your backend URL above first.');const data=await cloudApi('/api/files');const target=$('#cloudFilesList');if(!target)return;target.innerHTML=(data.files||[]).map(f=>`<div class="item"><span class="ico">${ic('file')}</span><div class="txt"><b>${esc(f.name)}</b><span>${esc(f.created_at||'Stored in cloud')}</span></div><button class="btn sm ghost" data-act="openCloudFile" data-path="${esc(f.id)}">Open</button><button class="iconbtn" data-act="deleteCloudFile" data-path="${esc(f.id)}" aria-label="Delete cloud file">${ic('trash')}</button></div>`).join('')||'<p class="note">No cloud files yet. Scan a document and save it after signing in.</p>'}catch(e){const target=$('#cloudFilesList');if(target)target.innerHTML=`<p class="note">${esc(e.message)}</p>`;else toast(e.message)}},
+ async openCloudFile(el){try{const d=await cloudApi('/api/files/url',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:el.dataset.path})});window.open(d.url,'_blank','noopener,noreferrer')}catch(e){toast('Could not open cloud file: '+e.message)}},
+ async deleteCloudFile(el){if(!confirm('Permanently delete this cloud file?'))return;try{await cloudApi('/api/files?path='+encodeURIComponent(el.dataset.path),{method:'DELETE'});toast('Cloud file deleted');await A.refreshCloudFiles()}catch(e){toast('Delete failed: '+e.message)}},
+ saveBackendUrl(){const u=val('backendUrlInput').trim();if(u&&!/^https?:\/\//i.test(u)){toast('Enter a valid https:// backend URL');return}ls('veda_backend_url',u||null);toast(u?'Backend URL saved':'Backend disconnected');render()},
+ async testBackend(){const u=val('backendUrlInput').trim().replace(/\/$/,'');if(!u){toast('Enter the backend URL first');return}try{const r=await fetch(u+'/health');if(!r.ok)throw new Error('Status '+r.status);const d=await r.json();toast('Backend reachable: '+(d.status||'OK'))}catch(e){toast('Connection failed. Check URL, CORS and deployment.')}},
+ toggleConsent(el){const c=el.dataset.c;S.consents[c]=!S.consents[c];S.consentLog.push({t:Date.now(),m:`${c==='ai'?'AI processing':'Family sharing'} turned ${S.consents[c]?'on':'off'}`});save();render()},
+ async exportData(){await saveFile('veda-health-data.json',JSON.stringify(S,null,2))},
+ deleteAll(){if(!confirm('Delete ALL your Veda data? This removes documents, medicines, appointments, family and chat. It can\'t be undone.'))return;const keep=S.consents;S=blank();S.consents=keep;S.onboarded=false;ls(KEY,null);save();navStack=[];view='home';render();toast('All data deleted')},
+ askQ(el){closeSheet();ask(el.dataset.q)},
+ chatSend(){const i=$('#chatIn');const q=i.value.trim();if(!q)return;i.value='';ask(q)},
+ clearChat(){S.chat=[];save();render()},
+ openSrc(el){const k=el.dataset.k,id=el.dataset.id;if(k==='doc')go('doc',id);else if(k==='medicine')go('cabinet');else if(k==='appointment')go('brief',id);else go('journey')},
+ clearDemo(){if(!confirm('Remove all demo data? Your own records will be kept.'))return;['docs','medicines','appointments','symptoms','family'].forEach(k=>S[k]=S[k].filter(x=>!x.demo));S.allergies=S.allergies.filter(x=>!x.demo);S.profile.contacts=S.profile.contacts.filter(x=>!x.demo);S.profile.doctors=S.profile.doctors.filter(x=>!x.demo);S.briefs={};S.chat=[];S.demo=false;save();render()}
+};
+async function saveFile(name,data){try{const dl=window.claude&&await claude.use('downloads');if(dl){await dl.save({filename:name,data});toast('Saved');return}}catch(e){if(e&&e.code==='user_declined')return}
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'text/plain'}));a.download=name;a.click();toast('Download started')}catch(e){toast('Download isn\'t available here. Use Copy instead.')}}
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const fn=A[el.dataset.act];if(fn){e.preventDefault();fn(el,e)}});
+document.addEventListener('change',e=>{
+  if(e.target.id==='trKey'){go('trends',{key:e.target.value,a:viewArg&&viewArg.a,b:viewArg&&viewArg.b},false)}
+  if(e.target.id==='cmpA'||e.target.id==='cmpB'){go('trends',{key:viewArg&&viewArg.key,a:val('cmpA'),b:val('cmpB')},false)}
+  if(['recK','recS'].includes(e.target.id)){go('records',{q:val('recQ'),k:val('recK'),s:val('recS')},false)}});
+document.addEventListener('input',e=>{if(e.target.id==='recQ'){const pos=e.target.selectionStart;clearTimeout(window._rq);window._rq=setTimeout(()=>{go('records',{q:val('recQ'),k:val('recK'),s:val('recS')},false);const i=$('#recQ');if(i){i.focus();i.setSelectionRange(pos,pos)}},250)}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden&&S.onboarded)closeSheet();if(e.key==='Enter'&&e.target.id==='chatIn'){e.preventDefault();A.chatSend()}});
+$('#sheet').addEventListener('click',e=>{if(e.target.id==='sheet'&&S.onboarded)closeSheet()});
+
+/* ============ demo data (fictional) ============ */
+function loadDemo(){
+  const t=new Date();const d=n=>addDays(n,t);
+  S.demo=true;Object.assign(S.profile,{name:S.profile.name&&S.profile.name!=='Friend'?S.profile.name:'Alex',dob:'1991-04-14',sex:'',blood:'B+',conditions:'Occasional headaches (self-noted)',emergencyNumber:'112'});
+  S.profile.contacts.push({id:uid(),name:'Priya',relation:'Sister',phone:'+91 98765 43210',demo:true});S.profile.doctors.push({id:uid(),name:'Dr. Sharma (General Physician)',phone:'+91 98100 00000',demo:true});
+  S.allergies.push({id:uid(),name:'Penicillin',reaction:'Skin rash',demo:true});
+  const mk=(n,i,s,f,st,doc,notes,end,status='active')=>({id:uid(),name:n,ingredient:i,strength:s,dosage:'1 tablet',frequency:f,perDay:perDay(f),start:st,end:end||'',doctor:doc,status,notes,demo:true,source:'demo'});
+  const p=['Hemoglobin','g/dL',12.8,13.2,12,15.5],v=['Vitamin D','ng/mL',28,22,30,100],c=['Total Cholesterol','mg/dL',190,204,null,200],l=['LDL Cholesterol','mg/dL',118,131,null,100],g=['Fasting Glucose','mg/dL',96,99,70,99],tsh=['TSH','µIU/mL',2.4,2.6,.4,4];
+  const prm=(a,i)=>({name:a[0],unit:a[1],value:a[2+i],text:'',refLow:a[4],refHigh:a[5]});
+  const dPrev=uid(),dCur=uid(),dRx=uid(),dRx2=uid();
+  S.docs.push({id:dPrev,kind:'lab',title:'Blood Report',date:d(-112),lab:'City Diagnostics',doctor:'',params:[p,v,c,l,g,tsh].map(x=>prm(x,0)),medicines:[],summary:'Routine blood panel: haemoglobin, vitamin D, cholesterol, glucose and thyroid values.',source:'demo',demo:true,addedAt:Date.now()-1e3},
+    {id:dCur,kind:'lab',title:'Blood Report',date:d(-1),lab:'City Diagnostics',doctor:'',params:[p,v,c,l,g,tsh].map(x=>prm(x,1)),medicines:[],summary:'Follow-up blood panel with the same tests as the previous report.',source:'demo',demo:true,addedAt:Date.now()},
+    {id:dRx,kind:'prescription',title:'Prescription — Dr. Sharma',date:d(-110),lab:'',doctor:'Dr. Sharma',params:[],medicines:[{name:'Pantoprazole',ingredient:'Pantoprazole',strength:'40 mg',frequency:'Once daily',duration:'30 days'},{name:'Vitamin D3',ingredient:'Cholecalciferol',strength:'60000 IU',frequency:'Weekly',duration:'8 weeks'}],summary:'Prescription after a routine checkup, listing two medicines.',source:'demo',demo:true,addedAt:Date.now()-5e3},
+    {id:dRx2,kind:'prescription',title:'Urgent care prescription',date:d(-6),lab:'',doctor:'Dr. Rao',params:[],medicines:[{name:'Amoxicillin + Clavulanate',ingredient:'Amoxicillin + Clavulanic acid',strength:'625 mg',frequency:'Twice daily',duration:'5 days'}],summary:'Prescription from an urgent care visit.',source:'demo',demo:true,addedAt:Date.now()-2e3});
+  S.medicines.push(mk('Pantoprazole','Pantoprazole','40 mg','Once daily',d(-110),'Dr. Sharma','Before breakfast',null),
+    mk('Paracetamol 500','Paracetamol','500 mg','As needed',d(-20),'Dr. Sharma','For headaches',null),
+    mk('Dolo 650','Paracetamol','650 mg','As needed',d(-8),'Dr. Rao','Bought over the counter',null),
+    mk('Amoxicillin + Clavulanate','Amoxicillin + Clavulanic acid','625 mg','Twice daily',d(-6),'Dr. Rao','5-day course',d(-1)),
+    mk('Vitamin D3','Cholecalciferol','60000 IU','Weekly',d(-110),'Dr. Sharma','8-week course',d(-54),'completed'));
+  S.medicines[3].end=d(0);S.medicines[3].fromDoc=dRx2;S.medicines[0].fromDoc=dRx;
+  [[-12,'Headache','Mild','After long screen time'],[-7,'Headache','Moderate',''],[-3,'Headache','Mild','Morning'],[-2,'Tiredness','Mild','']].forEach(s=>S.symptoms.push({id:uid(),name:s[1],date:d(s[0]),severity:s[2],note:s[3],demo:true}));
+  S.appointments.push({id:uid(),doctor:'Dr. Sharma',specialty:'General Physician',date:d(-112),time:'10:00',location:'Sharma Clinic',purpose:'Routine checkup',notes:'Advised vitamin D and a repeat blood test in 3 months.',demo:true},
+    {id:uid(),doctor:'Dr. Rao',specialty:'Urgent care',date:d(-6),time:'18:30',location:'City Urgent Care',purpose:'Throat infection',notes:'Prescribed a 5-day antibiotic course.',demo:true},
+    {id:uid(),doctor:'Dr. Sharma',specialty:'General Physician',date:d(5),time:'10:30',location:'Sharma Clinic',purpose:'Follow-up after blood test',notes:'',demo:true});
+  S.family.push({id:uid(),name:'Meera',relation:'Mom',phone:'+91 98111 22222',consentDate:d(-30),access:{medicines:true,appointments:true,reports:false,emergency:true},demo:true});
+}
+
+/* ============ boot ============ */
+(function boot(){
+  $('#logoMark').innerHTML=ic('heart');$('#sosIc').innerHTML=ic('alert');$('#moreIc').innerHTML=ic('more');$('#xIc').innerHTML=ic('x');
+  load();render();initDb();initAI();
+})();
+</script>
+</body>
+</html>
